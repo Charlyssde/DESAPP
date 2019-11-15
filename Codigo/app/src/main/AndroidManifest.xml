@@ -12,7 +12,6 @@
         <activity android:name=".Moderador.FeedModerador"></activity>
         <activity android:name=".Mensajeria.ChatIndividualGUI" />
         <activity android:name=".Mensajeria.ChatsGUI" />
-        <activity android:name=".Moderador.RegistrarModerador" />
         <activity android:name=".Iniciar_Sesion">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

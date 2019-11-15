@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Photogram</string>
+    <string name="registrar"> Registrar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
 </resources>
