@@ -5,7 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Moderador.RegistrarModerador">
+    android:background="@color/background"
+    tools:context=".Moderador.FeedModerador">
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFotosModerador"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
