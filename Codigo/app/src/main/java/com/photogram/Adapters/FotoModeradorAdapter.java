@@ -3,6 +3,7 @@ package com.photogram.Adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,10 +52,12 @@ public class FotoModeradorAdapter extends RecyclerView.Adapter<FotoModeradorAdap
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private TextView lblUsername;
-
+        private ImageView imgView;
         public ViewHolder(View v){
             super(v);
             lblUsername = v.findViewById(R.id.lblUsername);
+            imgView = v.findViewById(R.id.imageView);
+            imgView.setImageResource(R.drawable.img_example);
         }
     }
 }
