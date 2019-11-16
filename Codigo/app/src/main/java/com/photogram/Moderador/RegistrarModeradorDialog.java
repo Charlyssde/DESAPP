@@ -22,7 +22,7 @@ public class RegistrarModeradorDialog extends DialogFragment {
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.registrar_moderador, null))
+        builder.setView(inflater.inflate(R.layout.dialog_registrar_moderador, null))
                 // Add action buttons
                 .setPositiveButton(R.string.registrar, new DialogInterface.OnClickListener() {
                     @Override

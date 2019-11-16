@@ -4,6 +4,7 @@
 
     <item
         android:id="@+id/m_registrar_moderador"
-        android:title="Registrar moderador"
-        android:icon="@mipmap/ic_launcher"/>
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_registrar_moderador"
+        android:title="Registrar moderador"/>
 </menu>

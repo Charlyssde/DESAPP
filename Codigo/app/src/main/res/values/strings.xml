@@ -4,4 +4,6 @@
     <string name="cancelar">Cancelar</string>
     <string name="username">username</string>
     <string name="password">password</string>
+    <string name="nuevo_chat">Nuevo</string>
+    <string name="titleModerdadorFeed">Feed Moderador</string>
 </resources>

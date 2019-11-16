@@ -1,7 +1,6 @@
 package com.photogram.Moderador;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -10,10 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.PixelFormat;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -26,12 +21,8 @@ import com.photogram.Adapters.FotoModeradorAdapter;
 import com.photogram.Modelo.FotoModerador;
 import com.photogram.R;
 
-import java.io.Console;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class FeedModerador extends AppCompatActivity {
 
@@ -44,8 +35,10 @@ public class FeedModerador extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_moderador);
 
+        FeedModerador.this.setTitle(R.string.titleModerdadorFeed);
+
         rv = findViewById(R.id.rvFotosModerador);
-        getFotos();
+        setFotos();
 
 
         LinearLayoutManager llm = new LinearLayoutManager(FeedModerador.this);
@@ -65,10 +58,6 @@ public class FeedModerador extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
-    }
-
-    private void getFotos() {
-        setFotos();
     }
 
     private void setFotos() {
@@ -107,13 +96,14 @@ public class FeedModerador extends AppCompatActivity {
         lista.add(foto);
         lista.add(foto);
         lista.add(foto);
-        Log.e(TAG, "IDKWH");
         return lista;
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_moderador, menu);
+        inflater.inflate(R.menu.menu_feed_moderador, menu);
         return true;
     }
+
 }
