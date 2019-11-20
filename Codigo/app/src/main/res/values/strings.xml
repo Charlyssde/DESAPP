@@ -6,4 +6,5 @@
     <string name="password">password</string>
     <string name="nuevo_chat">Nuevo</string>
     <string name="titleModerdadorFeed">Feed Moderador</string>
+    <string name="hint_mensaje">Escribe un mensaje</string>
 </resources>

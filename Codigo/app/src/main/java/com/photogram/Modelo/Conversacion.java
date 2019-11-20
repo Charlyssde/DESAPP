@@ -1,15 +1,20 @@
 package com.photogram.Modelo;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Conversacion{
+public class Conversacion implements Serializable {
     private String lastMensaje;
     private Usuario remitente;
     private Usuario destinatario;
+    private List<Mensaje> mensajes;
 
     public Conversacion(Usuario destinatario) {
         this.destinatario = destinatario;
-        this.lastMensaje = "Last messagge";
+        mensajes = new ArrayList<>();
+        Mensaje m = new Mensaje();
+        lastMensaje = m.getContenido();
     }
 
     public String getLastMensaje() {
