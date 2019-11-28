@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".RegistrarUsuario">
+    tools:context=".Inicio.RegistrarUsuario"
+    android:orientation="vertical"
+    >
 
 
     <TextView
@@ -17,7 +19,10 @@
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="369dp" />
+        tools:layout_editor_absoluteY="369dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="70dp"
+        />
 
     <EditText
         android:id="@+id/editText11"
@@ -29,29 +34,13 @@
         android:textColor="#ffffff "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="396dp" />
+        tools:layout_editor_absoluteY="396dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"/>
 
-    <EditText
-        android:id="@+id/editText10"
-        android:layout_width="335dp"
-        android:layout_height="39dp"
-        android:backgroundTint="#ffffff "
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColor="#ffffff "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="287dp" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="111dp"
-        android:layout_height="47dp"
-        android:backgroundTint="#512DA8"
-        android:text="Aceptar"
-        android:textColor="#ffffff "
-        tools:layout_editor_absoluteX="262dp"
-        tools:layout_editor_absoluteY="642dp" />
+
+
 
     <TextView
         android:id="@+id/textView7"
@@ -62,7 +51,9 @@
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="477dp" />
+        tools:layout_editor_absoluteY="477dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"/>
 
     <EditText
         android:id="@+id/editText9"
@@ -75,7 +66,9 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="504dp" />
+        tools:layout_editor_absoluteY="504dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -86,7 +79,9 @@
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="43dp" />
+        tools:layout_editor_absoluteY="43dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"/>
 
     <EditText
         android:id="@+id/editText5"
@@ -98,7 +93,9 @@
         android:textColor="#ffffff "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="70dp" />
+        tools:layout_editor_absoluteY="70dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:id="@+id/textView5"
@@ -109,7 +106,9 @@
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="155dp" />
+        tools:layout_editor_absoluteY="155dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"/>
 
     <EditText
         android:id="@+id/editText6"
@@ -122,7 +121,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="182dp" />
+        tools:layout_editor_absoluteY="182dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -133,16 +134,54 @@
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="260dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="111dp"
-        android:layout_height="47dp"
-        android:backgroundTint="#512DA8"
-        android:text="Cancelar"
+        tools:layout_editor_absoluteY="260dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"/>
+    <EditText
+        android:id="@+id/editText10"
+        android:layout_width="335dp"
+        android:layout_height="39dp"
+        android:backgroundTint="#ffffff "
+        android:ems="10"
+        android:inputType="textPersonName"
         android:textColor="#ffffff "
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="642dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="287dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        >
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="140dp"
+            android:layout_height="55dp"
+            android:backgroundTint="#512DA8"
+            android:text="Cancelar"
+            android:textColor="#ffffff "
+            tools:layout_editor_absoluteX="42dp"
+            tools:layout_editor_absoluteY="642dp"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            />
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="140dp"
+            android:layout_height="55dp"
+            android:backgroundTint="#512DA8"
+            android:text="Aceptar"
+            android:textColor="#ffffff "
+            tools:layout_editor_absoluteX="262dp"
+            tools:layout_editor_absoluteY="642dp" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

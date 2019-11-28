@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Moderador.FeedModerador"></activity>
-        <activity android:name=".RegistrarUsuario"></activity>
+        <activity android:name=".Inicio.RegistroPerfil"></activity>
+        <activity android:name=".Moderador.FeedModerador" />
+        <activity android:name=".Inicio.RegistrarUsuario" />
         <activity android:name=".Feed.Feed" />
         <activity android:name=".Mensajeria.ChatIndividualGUI" />
         <activity android:name=".Mensajeria.ChatsGUI" />
-        <activity android:name=".Iniciar_Sesion">
+        <activity android:name=".Inicio.Iniciar_Sesion">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

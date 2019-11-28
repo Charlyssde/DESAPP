@@ -1,14 +1,16 @@
-package com.photogram;
+package com.photogram.Inicio;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class RegistrarUsuario extends AppCompatActivity {
+import com.photogram.R;
+
+public class RegistroPerfil extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrar_usuario);
+        setContentView(R.layout.activity_registro_perfil);
     }
 }

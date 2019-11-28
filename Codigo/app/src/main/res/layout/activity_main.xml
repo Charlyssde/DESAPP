@@ -1,11 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".Iniciar_Sesion">
+    tools:context=".Inicio.Iniciar_Sesion"
+    android:orientation="vertical">
+    <View
+        android:id="@+id/view"
+        android:layout_width="414dp"
+        android:layout_height="315dp"
+        android:foreground="@mipmap/logo_transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="-2dp" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre de usuario:"
+        android:textColor="#ffffff "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="286dp"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="277dp"
+        android:layout_height="42dp"
+        android:backgroundTint="#ffffff "
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="#ffffff "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="467dp"
+        android:layout_gravity="center" />
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="sans-serif-medium"
+        android:inputType="textPersonName"
+        android:text="Contraseña:"
+        android:textColor="#ffffff "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="69dp"
+        tools:layout_editor_absoluteY="414dp"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="278dp"
+        android:layout_height="44dp"
+        android:backgroundTint="#ffffff "
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="321dp"
+        android:layout_gravity="center"/>
+
+
+
 
     <Button
         android:id="@+id/button"
@@ -22,63 +87,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.847"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre de usuario:"
-        android:textColor="#ffffff "
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="286dp" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="277dp"
-        android:layout_height="42dp"
-        android:backgroundTint="#ffffff "
-        android:ems="10"
-        android:inputType="textPassword"
-        android:textColor="#ffffff "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="467dp" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="278dp"
-        android:layout_height="44dp"
-        android:backgroundTint="#ffffff "
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="321dp" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="sans-serif-medium"
-        android:inputType="textPersonName"
-        android:text="Contraseña:"
-        android:textColor="#ffffff "
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="414dp" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="414dp"
-        android:layout_height="315dp"
-        android:foreground="@mipmap/logo_transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="-2dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        tools:ignore="MissingConstraints"
+        android:layout_gravity="center"/>
+</LinearLayout>
