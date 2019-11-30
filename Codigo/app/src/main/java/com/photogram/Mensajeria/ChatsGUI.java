@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -54,7 +55,8 @@ public class ChatsGUI extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO
-                //Aquí se abre la conversación.
+                Intent intent = new Intent(ChatsGUI.this, ChatIndividualGUI.class);
+                ChatsGUI.this.startActivity(intent);
             }
         });
         rv.setAdapter(adapter);

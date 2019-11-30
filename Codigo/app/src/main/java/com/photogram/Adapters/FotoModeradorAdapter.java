@@ -42,7 +42,7 @@ public class FotoModeradorAdapter extends RecyclerView.Adapter<FotoModeradorAdap
 
     @Override
     public void onBindViewHolder(@NonNull FotoModeradorAdapter.ViewHolder holder, int position) {
-        holder.lblUsername.setText(mDataSet.get(position).getUsername());
+        holder.lblUsername.setText(mDataSet.get(position).getUsuario().getUsername());
     }
 
     @Override
@@ -55,8 +55,8 @@ public class FotoModeradorAdapter extends RecyclerView.Adapter<FotoModeradorAdap
         private ImageView imgView;
         public ViewHolder(View v){
             super(v);
-            lblUsername = v.findViewById(R.id.lblUsername);
-            imgView = v.findViewById(R.id.imageView);
+            lblUsername = v.findViewById(R.id.lblUsernameMod);
+            imgView = v.findViewById(R.id.imageViewMod);
             imgView.setImageResource(R.drawable.img_example);
         }
     }

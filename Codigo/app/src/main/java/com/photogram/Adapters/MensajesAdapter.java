@@ -23,6 +23,9 @@ public class MensajesAdapter extends BaseAdapter {
         this.mensajes = mensajes;
         this.listener = listener;
         this.context = context;
+
+
+
     }
 
     @Override

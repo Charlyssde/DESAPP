@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,7 +52,7 @@ public class FeedModerador extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.m_registrar_moderador:
-                DialogFragment dialog = new RegistrarModeradorDialog();
+                DialogFragment dialog = new RegistrarModeradorDialog(FeedModerador.this);
                 dialog.show(getSupportFragmentManager(), "Registro");
                 return true;
             default:
