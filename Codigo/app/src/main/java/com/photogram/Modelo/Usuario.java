@@ -1,5 +1,7 @@
 package com.photogram.Modelo;
 
+import java.util.Random;
+
 public class Usuario {
     private String username;
 
@@ -8,6 +10,11 @@ public class Usuario {
     }
 
     public String getUsername() {
-        return username;
+        return username + generateRndm() ;
+    }
+
+    private int generateRndm(){
+        Random rd = new Random();
+        return rd.nextInt();
     }
 }

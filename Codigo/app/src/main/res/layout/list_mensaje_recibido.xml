@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingVertical="10dp"
-    android:paddingRight="15dp"
-    android:paddingLeft="60dp"
     android:clipToPadding="false">
 
     <TextView
@@ -17,7 +15,7 @@
         android:elevation="2dp"
         android:textSize="18dp"
         android:layout_alignParentLeft="true"
-        android:text="Aquí va un mensaje"
+        android:text="Aquí va un mensaje recibido"
         />
 
 </RelativeLayout>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.photogram.Feed.Feed;
 import com.photogram.Mensajeria.ChatIndividualGUI;
 import com.photogram.Mensajeria.ChatsGUI;
 import com.photogram.Moderador.FeedModerador;
@@ -16,7 +17,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(Iniciar_Sesion.this, ChatIndividualGUI.class);
+        Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
         Iniciar_Sesion.this.startActivity(intent);
         finish();
     }

@@ -1,13 +1,14 @@
 package com.photogram.Modelo;
 
 public class FotoModerador {
-    private String username = "username";
+    private Usuario usuario;
     private Foto foto;
 
     public FotoModerador() {
+        usuario = new Usuario();
     }
 
-    public String getUsername() {
-        return username;
+    public Usuario getUsuario() {
+        return usuario;
     }
 }
