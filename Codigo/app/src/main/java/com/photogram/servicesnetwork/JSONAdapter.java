@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JSONAdapter {
+
     public static LoginPOJO loginAdapter(JSONObject jsonObject){
         LoginPOJO res = new LoginPOJO();
         try {
@@ -19,6 +20,7 @@ public class JSONAdapter {
         }
         return res;
     }
+
 
 
 }

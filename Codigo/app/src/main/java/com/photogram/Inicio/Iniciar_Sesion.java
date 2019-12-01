@@ -48,8 +48,12 @@ public class Iniciar_Sesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtUsername = findViewById(R.id.editText2);
-        txtPassword = findViewById(R.id.editText);
+        Intent intent = new Intent(Iniciar_Sesion.this, FeedModerador.class);
+        Iniciar_Sesion.this.startActivity(intent);
+        finish();
+
+        txtUsername = findViewById(R.id.editText);
+        txtPassword = findViewById(R.id.editText2);
         btnIngresar = findViewById(R.id.button);
 
         volley = VolleyS.getInstance(Iniciar_Sesion.this);
@@ -61,11 +65,12 @@ public class Iniciar_Sesion extends AppCompatActivity {
 
             }
         });
+
         SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
         String token = myPreferences.getString("TOKEN", "unknown");
         if (!token.equals("unknown")) {
             Toast.makeText(Iniciar_Sesion.this, "TK: " + token, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
+            //Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
             Iniciar_Sesion.this.startActivity(intent);
             finish();
         }
@@ -99,6 +104,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Iniciar_Sesion.this, "Error al ingresar", Toast.LENGTH_SHORT).show();
                 Log.e(TAG, "Testing network");
                 btnIngresar.setEnabled(true);
             }
