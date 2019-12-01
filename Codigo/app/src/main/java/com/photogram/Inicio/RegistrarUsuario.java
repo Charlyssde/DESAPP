@@ -42,6 +42,8 @@ public class RegistrarUsuario extends AppCompatActivity {
     private String estado;
     private Boolean estadoCuenta;
 
+    private String TAG = "Registrar_Usuario";
+
     private VolleyS volley;
     protected RequestQueue fRequestQueue;
 
