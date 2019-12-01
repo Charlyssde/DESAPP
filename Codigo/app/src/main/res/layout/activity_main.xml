@@ -7,6 +7,30 @@
     android:background="#000000"
     tools:context=".Inicio.Iniciar_Sesion"
     android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Eres moderador? Haz clic"
+            android:textColor="#ffffff"
+            />
+        <Button
+            android:id="@+id/buttonModeradorInicio"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:text="Aqui"
+            android:textColor="#ffffff "
+            android:backgroundTint="#7E57C2"
+            tools:layout_editor_absoluteX="262dp"
+            tools:layout_editor_absoluteY="642dp" />
+    </LinearLayout>
     <View
         android:id="@+id/view"
         android:layout_width="414dp"
@@ -93,4 +117,28 @@
         tools:ignore="MissingConstraints"
         android:layout_marginTop="40dp"
         android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿No tienes cuenta? Haz clic"
+            android:textColor="#ffffff"
+            />
+        <Button
+            android:id="@+id/buttonCuentaNueva"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:text="Aqui"
+            android:textColor="#ffffff "
+            android:backgroundTint="#7E57C2"
+            tools:layout_editor_absoluteX="262dp"
+            tools:layout_editor_absoluteY="642dp" />
+    </LinearLayout>
 </LinearLayout>

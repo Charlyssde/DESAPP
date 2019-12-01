@@ -40,9 +40,10 @@ public class RegistrarUsuario extends AppCompatActivity {
     private Button btnAceptar;
     private Button btnCancelar;
     private String estado;
-    private Boolean estadoCuenta;
+    private String estadoCuenta;
 
-    private String TAG = "Registrar_Usuario";
+    private static String TAG = "RegistrarUsuario"; //Para comentar los mensajes en las bitácoras
+
 
     private VolleyS volley;
     protected RequestQueue fRequestQueue;
@@ -61,7 +62,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         btnAceptar = findViewById(R.id.buttonAceptar);
         btnCancelar = findViewById(R.id.button2);
         estado = "Hey! Estoy usando photogram";
-        estadoCuenta = true;
+        estadoCuenta = "true";
 
 
 
@@ -90,42 +91,30 @@ public class RegistrarUsuario extends AppCompatActivity {
         Map<String, String> param = new HashMap<>();
         param.put("username", txtUsername.getText().toString());
         param.put("password", txtPassword.getText().toString());
-        param.put("username", txtUsername.getText().toString());
-        param.put("password", txtPassword.getText().toString());
-        param.put("username", txtUsername.getText().toString());
-        param.put("password", txtPassword.getText().toString());
-        param.put("username", txtUsername.getText().toString());
-        param.put("password", txtPassword.getText().toString());
+        param.put("nombre", txtNombres.getText().toString());
+        param.put("apellidoPaterno", txtApellidoPaterno.getText().toString());
+        param.put("apellidoMaterno", txtApellidoMaterno.getText().toString());
+        param.put("correo", txtCorreo.getText().toString());
+        param.put("estado", estado);
+        param.put("estadoCuenta", estadoCuenta);
 
         JSONObject jsonObject = new JSONObject(param);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApiEndPoint.login, jsonObject,
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApiEndPoint.registrarUsuario, jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        LoginPOJO result = JSONAdapter.loginAdapter(response);
-                        Default d = Default.getInstance(RegistrarUsuario.this);
-                        d.setToken(result.getToken());
-
-                        SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
-                        SharedPreferences.Editor myEditor = myPreferences.edit();
-                        myEditor.putString("TOKEN", "" + result.getToken());
-                        myEditor.commit();
-
-                        Toast.makeText(RegistrarUsuario.this, "TK: " + d.getToken(), Toast.LENGTH_SHORT).show();
-
-                        Intent intent = new Intent(RegistrarUsuario.this, FeedModerador.class);
-                        RegistrarUsuario.this.startActivity(intent);
-                        finish();
+                        Toast.makeText(RegistrarUsuario.this, "Registrado",
+                                Toast.LENGTH_SHORT).show();
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Testing network");
-                btnAceptar.setEnabled(true);
-            }
-        });
-
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG, "" + error.networkResponse);
+                    }
+                });
         volley.addToQueue(jsonObjectRequest);
-
     }
+
 }

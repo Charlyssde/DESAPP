@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.photogram.Feed.Feed;
 import com.photogram.Moderador.FeedModerador;
+import com.photogram.Moderador.RegistrarModeradorDialog;
 import com.photogram.R;
 import com.photogram.pojo.LoginPOJO;
 import com.photogram.servicesnetwork.ApiEndPoint;
@@ -35,6 +36,8 @@ public class Iniciar_Sesion extends AppCompatActivity {
     private EditText txtUsername;
     private EditText txtPassword;
     private Button btnIngresar;
+    private Button btnModeradorInicio;
+    private Button btnRegistrarCuenta;
 
     private static String TAG = "MainActivity"; //Para comentar los mensajes en las bitácoras
 
@@ -68,6 +71,22 @@ public class Iniciar_Sesion extends AppCompatActivity {
             Iniciar_Sesion.this.startActivity(intent);
             finish();
         }
+        Button btn = (Button) findViewById(R.id.buttonCuentaNueva);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), RegistrarUsuario.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+       /* Button btn2 = (Button) findViewById(R.id.buttonModeradorInicio);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), RegistrarModeradorDialog.class);
+                startActivityForResult(intent, 0);
+            }
+        }); */
     }
 
     private void loginRequest (){
@@ -105,6 +124,9 @@ public class Iniciar_Sesion extends AppCompatActivity {
         });
         volley.addToQueue(jsonObjectRequest);
 
+
+    }
+    public void RegistrarUsuario (){
 
     }
 }
