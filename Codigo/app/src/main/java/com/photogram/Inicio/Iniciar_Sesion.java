@@ -47,8 +47,8 @@ public class Iniciar_Sesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtUsername = findViewById(R.id.editText2);
-        txtPassword = findViewById(R.id.editText);
+        txtUsername = findViewById(R.id.editText2Usuario);
+        txtPassword = findViewById(R.id.editTextContraseña);
         btnIngresar = findViewById(R.id.button);
 
         volley = VolleyS.getInstance(Iniciar_Sesion.this);

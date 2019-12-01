@@ -21,11 +21,11 @@
         tools:layout_editor_absoluteX="42dp"
         tools:layout_editor_absoluteY="369dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/nombreUsuario"
         android:layout_width="335dp"
         android:layout_height="39dp"
         android:backgroundTint="#ffffff "
@@ -56,7 +56,7 @@
         android:layout_marginTop="30dp"/>
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/Contraseña"
         android:layout_width="335dp"
         android:layout_height="39dp"
         android:backgroundTint="#ffffff "
@@ -84,7 +84,7 @@
         android:layout_marginTop="30dp"/>
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/nombres"
         android:layout_width="335dp"
         android:layout_height="39dp"
         android:backgroundTint="#ffffff "
@@ -111,7 +111,34 @@
         android:layout_marginTop="30dp"/>
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/apellidoPaterno"
+        android:layout_width="335dp"
+        android:layout_height="39dp"
+        android:backgroundTint="#ffffff "
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#ffffff "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="182dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp" />
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apellidos:"
+        android:textColor="#ffffff "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="155dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/apellidoMaterno"
         android:layout_width="335dp"
         android:layout_height="39dp"
         android:backgroundTint="#ffffff "
@@ -138,7 +165,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"/>
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/correo"
         android:layout_width="335dp"
         android:layout_height="39dp"
         android:backgroundTint="#ffffff "
@@ -156,7 +183,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         >
         <Button
             android:id="@+id/button2"
@@ -170,7 +197,7 @@
 
             />
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/buttonAceptar"
             android:layout_width="140dp"
             android:layout_height="55dp"
             android:backgroundTint="#512DA8"

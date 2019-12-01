@@ -23,4 +23,63 @@
         android:layout_marginLeft="260dp"
         android:background="@drawable/ic_agregar"
         android:text="" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre de usuario:"
+        android:textColor="#ffffff "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="80dp"/>
+
+    <EditText
+        android:id="@+id/nombreUsuarotxt"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#ffffff "
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="#ffffff "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="467dp"
+        android:layout_marginTop="10dp"
+
+        android:layout_gravity="center" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="100dp"
+        >
+        <Button
+            android:id="@+id/button_cancelar"
+            android:layout_width="140dp"
+            android:layout_height="55dp"
+            android:backgroundTint="#512DA8"
+            android:text="Cancelar"
+            android:textColor="#ffffff "
+            tools:layout_editor_absoluteX="42dp"
+            tools:layout_editor_absoluteY="642dp"
+
+            />
+        <Button
+            android:id="@+id/button_aceptar"
+            android:layout_width="140dp"
+            android:layout_height="55dp"
+            android:backgroundTint="#512DA8"
+            android:text="Aceptar"
+            android:textColor="#ffffff "
+            tools:layout_editor_absoluteX="262dp"
+            tools:layout_editor_absoluteY="642dp" />
+
+
+    </LinearLayout>
+
 </LinearLayout>
