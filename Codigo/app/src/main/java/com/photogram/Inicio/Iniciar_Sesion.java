@@ -79,14 +79,14 @@ public class Iniciar_Sesion extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
-       /* Button btn2 = (Button) findViewById(R.id.buttonModeradorInicio);
+       Button btn2 = (Button) findViewById(R.id.buttonModeradorInicio);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), RegistrarModeradorDialog.class);
+                Intent intent = new Intent (v.getContext(), LoginModerador.class);
                 startActivityForResult(intent, 0);
             }
-        }); */
+        });
     }
 
     private void loginRequest (){
@@ -126,8 +126,8 @@ public class Iniciar_Sesion extends AppCompatActivity {
 
 
     }
-    public void RegistrarUsuario (){
 
-    }
+
+
 }
 

@@ -5,6 +5,7 @@ public class ApiEndPoint {
     private static String baseURL = "http://" + host + "/api";
 
     public static String login = baseURL + "/login";
+    public static String loginModerador = baseURL + "/loginModerador";
     public static String registrarModerador = baseURL + "/Moderador/";
     public static String registrarUsuario = baseURL + "/registro";
 }

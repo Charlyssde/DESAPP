@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".Inicio.Iniciar_Sesion"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="414dp"
+        android:layout_height="315dp"
+        android:foreground="@drawable/ic_app_moderador"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="-2dp" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre de usuario:"
+        android:textColor="#ffffff "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="286dp"
+        android:layout_marginLeft="70dp"
+        />
+    <EditText
+        android:id="@+id/editText2UsuarioModerador"
+        android:layout_width="278dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#ffffff "
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="321dp"
+        android:textColor="#ffffff "
+        android:layout_gravity="center"/>
+
+
+    <TextView
+        android:id="@+id/textViewContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contraseña:"
+        android:textColor="#ffffff "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="286dp"
+        android:layout_marginLeft="70dp"
+        />
+
+    <EditText
+        android:id="@+id/editTextContraseñaModerador"
+        android:layout_width="277dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#ffffff "
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="#ffffff "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="467dp"
+        />
+
+
+    <Button
+        android:id="@+id/IngresarModerador"
+        android:layout_width="105dp"
+        android:layout_height="57dp"
+        android:background="#7E57C2"
+        android:backgroundTint="#7E57C2"
+        android:drawableTint="#00CCB2B2"
+        android:text="Ingresar"
+        android:textColor="#FCFCFB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.847"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

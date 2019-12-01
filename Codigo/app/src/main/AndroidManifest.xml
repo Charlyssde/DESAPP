@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/ic_app_final"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Inicio.RegistroPerfil"></activity>
+        <activity android:name=".Inicio.LoginModerador"></activity>
+        <activity android:name=".Inicio.RegistroPerfil" />
         <activity android:name=".Moderador.FeedModerador" />
         <activity android:name=".Inicio.RegistrarUsuario" />
         <activity android:name=".Feed.Feed" />
