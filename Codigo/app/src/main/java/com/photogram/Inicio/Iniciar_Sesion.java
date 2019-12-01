@@ -17,6 +17,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.photogram.Feed.Feed;
 import com.photogram.Mensajeria.ChatIndividualGUI;
 import com.photogram.Moderador.FeedModerador;
 import com.photogram.R;
@@ -60,11 +61,12 @@ public class Iniciar_Sesion extends AppCompatActivity {
 
             }
         });
+
         SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
         String token = myPreferences.getString("TOKEN", "unknown");
         if (!token.equals("unknown")) {
             Toast.makeText(Iniciar_Sesion.this, "TK: " + token, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Iniciar_Sesion.this, FeedModerador.class);
+            //Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
             Iniciar_Sesion.this.startActivity(intent);
             finish();
         }
@@ -82,23 +84,23 @@ public class Iniciar_Sesion extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         LoginPOJO result = JSONAdapter.loginAdapter(response);
-                        Default d = Default.getInstance(Iniciar_Sesion.this);
-                        d.setToken(result.getToken());
+
 
                         SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
                         SharedPreferences.Editor myEditor = myPreferences.edit();
                         myEditor.putString("TOKEN", "" + result.getToken());
                         myEditor.commit();
 
-                        Toast.makeText(Iniciar_Sesion.this, "TK: " + d.getToken(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Iniciar_Sesion.this, "TK: " + result.getToken(), Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(Iniciar_Sesion.this, FeedModerador.class);
+                        Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
                         Iniciar_Sesion.this.startActivity(intent);
                         finish();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Iniciar_Sesion.this, "Error al ingresar", Toast.LENGTH_SHORT).show();
                 Log.e(TAG, "Testing network");
                 btnIngresar.setEnabled(true);
             }

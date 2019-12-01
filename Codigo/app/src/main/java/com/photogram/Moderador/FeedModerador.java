@@ -52,7 +52,7 @@ public class FeedModerador extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.m_registrar_moderador:
-                DialogFragment dialog = new RegistrarModeradorDialog(FeedModerador.this);
+                DialogFragment dialog = new RegistrarModeradorDialog();
                 dialog.show(getSupportFragmentManager(), "Registro");
                 return true;
             default:
