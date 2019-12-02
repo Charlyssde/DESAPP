@@ -67,7 +67,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
         String token = myPreferences.getString("TOKEN", "unknown");
         if (!token.equals("unknown")) {
             Toast.makeText(Iniciar_Sesion.this, "TK: " + token, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Iniciar_Sesion.this, RegistrarUsuario.class);
+            Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
             Iniciar_Sesion.this.startActivity(intent);
             finish();
         }

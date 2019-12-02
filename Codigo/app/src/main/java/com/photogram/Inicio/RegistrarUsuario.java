@@ -72,8 +72,6 @@ public class RegistrarUsuario extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 registrarUsuarioRequest();
-
-                finish();
             }
         });
         SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
