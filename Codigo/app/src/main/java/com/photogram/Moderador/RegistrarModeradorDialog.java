@@ -68,8 +68,7 @@ public class RegistrarModeradorDialog extends DialogFragment {
                                     new Response.Listener<JSONObject>() {
                                         @Override
                                         public void onResponse(JSONObject response) {
-                                            Toast.makeText(RegistrarModeradorDialog.super.getContext(), "Registrado",
-                                                    Toast.LENGTH_SHORT).show();
+
                                         }
                                     },
                                     new Response.ErrorListener() {

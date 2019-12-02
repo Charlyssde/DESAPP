@@ -97,6 +97,7 @@ public class RegistrarUsuario extends AppCompatActivity {
 
     private void registrarUsuarioRequest() {
         btnAceptar.setEnabled(false);
+        btnAceptar.setVisibility(View.INVISIBLE);
         Map<String, String> param = new HashMap<>();
 
         param.put("username", txtUsername.getText().toString());
@@ -106,14 +107,11 @@ public class RegistrarUsuario extends AppCompatActivity {
         param.put("apellidoM", txtApellidoMaterno.getText().toString());
         param.put("correo", txtCorreo.getText().toString());
         param.put("estado", estado);
+        param.put("estadoCuenta", "true");
 
 
         JSONObject jsonObject = new JSONObject(param);
-       try {
-           jsonObject.put("estadoCuenta", true);
-       } catch (Exception ex) {
-           ex.printStackTrace();
-       }
+
 
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApiEndPoint.registrarUsuario, jsonObject,
@@ -122,12 +120,19 @@ public class RegistrarUsuario extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         Toast.makeText(RegistrarUsuario.this, "Registrado",
                                 Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(RegistrarUsuario.this, Iniciar_Sesion.class);
+                        RegistrarUsuario.this.startActivity(intent);
+                        finish();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e(TAG, "" + error.networkResponse);
+                        Toast.makeText(RegistrarUsuario.this, "No se que madres haces",
+                                Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "" + error.getMessage());
+                        btnAceptar.setEnabled(true);
+                        btnAceptar.setVisibility(View.VISIBLE);
                     }
                 });
         volley.addToQueue(jsonObjectRequest);

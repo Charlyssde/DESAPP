@@ -57,15 +57,6 @@ public class LoginModerador extends AppCompatActivity {
                 btnIngresar.setEnabled(false);
             }
         });
-
-        SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
-        String token = myPreferences.getString("TOKEN", "unknown");
-        if (!token.equals("unknown")) {
-            Toast.makeText(LoginModerador.this, "TK: " + token, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(LoginModerador.this, FeedModerador.class);
-            LoginModerador.this.startActivity(intent);
-            finish();
-        }
     }
         private void loginRequestModerador(){
             btnIngresar.setEnabled(false);
@@ -79,15 +70,7 @@ public class LoginModerador extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             LoginPOJO result = JSONAdapter.loginAdapter(response);
-
-
-                            SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
-                            SharedPreferences.Editor myEditor = myPreferences.edit();
-                            myEditor.putString("TOKEN", "" + result.getToken());
-                            myEditor.commit();
-
                             Toast.makeText(LoginModerador.this, "TK: " + result.getToken(), Toast.LENGTH_SHORT).show();
-
                             Intent intent = new Intent(LoginModerador.this, FeedModerador.class);
                             LoginModerador.this.startActivity(intent);
                             finish();

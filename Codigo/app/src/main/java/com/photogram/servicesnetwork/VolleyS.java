@@ -36,7 +36,7 @@ public class VolleyS {
 
             }
             request.setRetryPolicy(new DefaultRetryPolicy(
-                    60, 1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                    2000, 1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             mRequestQueue.add(request);
         }
     }
