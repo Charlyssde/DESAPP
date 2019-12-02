@@ -60,7 +60,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         txtApellidoMaterno = findViewById(R.id.apellidoMaterno);
         txtCorreo = findViewById(R.id.correo);
         btnAceptar = findViewById(R.id.buttonAceptar);
-        btnCancelar = findViewById(R.id.button2);
+        btnCancelar = findViewById(R.id.buttonCancelarRegistro);
         estado = "Hey! Estoy usando photogram";
         estadoCuenta = "true";
 
@@ -73,6 +73,7 @@ public class RegistrarUsuario extends AppCompatActivity {
             public void onClick(View view) {
                 registrarUsuarioRequest();
 
+                finish();
             }
         });
         SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
@@ -81,8 +82,18 @@ public class RegistrarUsuario extends AppCompatActivity {
             Toast.makeText(RegistrarUsuario.this, "TK: " + token, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(RegistrarUsuario.this, FeedModerador.class);
             RegistrarUsuario.this.startActivity(intent);
-            finish();
+
         }
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (view.getContext(), Iniciar_Sesion.class);
+                startActivityForResult(intent, 0);
+                finish();
+
+            }
+        });
+
 
     }
 
