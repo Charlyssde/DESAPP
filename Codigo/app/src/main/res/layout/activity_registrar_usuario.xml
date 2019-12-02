@@ -101,14 +101,14 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Apellidos:"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Apellido paterno:"
         android:textColor="#ffffff "
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="155dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"/>
+        tools:layout_editor_absoluteY="155dp" />
 
     <EditText
         android:id="@+id/apellidoPaterno"
@@ -124,18 +124,19 @@
         tools:layout_editor_absoluteY="182dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp" />
+
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Apellidos:"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Apellido materno:"
         android:textColor="#ffffff "
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="155dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"/>
+        tools:layout_editor_absoluteY="155dp" />
 
     <EditText
         android:id="@+id/apellidoMaterno"
@@ -186,7 +187,7 @@
         android:layout_marginTop="10dp"
         >
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonCancelarRegistro"
             android:layout_width="140dp"
             android:layout_height="55dp"
             android:backgroundTint="#512DA8"
