@@ -53,7 +53,7 @@ public class Feed extends AppCompatActivity {
 
         setMenu();
 
-        setFotos();
+        //setFotos();
 
         LinearLayoutManager llm = new LinearLayoutManager(Feed.this);
         rv.setLayoutManager(llm);

@@ -32,7 +32,14 @@
             android:background="@drawable/ic_reaccion"
             android:layout_marginLeft="50dp"/>
 
-
+        <TextView
+            android:id="@+id/txtNumReacciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="500"
+            android:layout_marginLeft="10dp"
+            android:textColor="#FFFFFFFF"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtComentarios"

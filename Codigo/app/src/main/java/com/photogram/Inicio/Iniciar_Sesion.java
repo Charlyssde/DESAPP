@@ -65,19 +65,13 @@ public class Iniciar_Sesion extends AppCompatActivity {
 
         SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
         String token = myPreferences.getString("TOKEN", "unknown");
-        if (!token.equals("unknown")) {
-            Toast.makeText(Iniciar_Sesion.this, "TK: " + token, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
-            Iniciar_Sesion.this.startActivity(intent);
-            finish();
-        }
+
         Button btn = (Button) findViewById(R.id.buttonCuentaNueva);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), RegistrarUsuario.class);
-                startActivityForResult(intent, 0);
-                finish();
+                Intent intent = new Intent(getApplicationContext(), RegistrarUsuario.class);
+                startActivity(intent);
             }
         });
        Button btn2 = (Button) findViewById(R.id.buttonModeradorInicio);
@@ -110,9 +104,9 @@ public class Iniciar_Sesion extends AppCompatActivity {
                         myEditor.putString("TOKEN", "" + result.getToken());
                         myEditor.commit();
 
-                        Toast.makeText(Iniciar_Sesion.this, "TK: " + result.getToken(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Iniciar_Sesion.this, "Iniciando " , Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(Iniciar_Sesion.this, Iniciar_Sesion.class);
+                        Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
                         Iniciar_Sesion.this.startActivity(intent);
                         finish();
                     }
