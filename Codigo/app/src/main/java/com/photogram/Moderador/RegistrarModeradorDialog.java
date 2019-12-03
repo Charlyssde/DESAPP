@@ -68,7 +68,9 @@ public class RegistrarModeradorDialog extends DialogFragment {
                                     new Response.Listener<JSONObject>() {
                                         @Override
                                         public void onResponse(JSONObject response) {
-
+                                            //Hacer un toast de exito4
+                                            //Toast.makeText(getApplicationContext(),
+                                            //                    "Toast por defecto", Toast.LENGTH_SHORT).show;
                                         }
                                     },
                                     new Response.ErrorListener() {
