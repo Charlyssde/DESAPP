@@ -35,8 +35,7 @@ public class VolleyS {
                 mRequestQueue = getRequestQueue();
 
             }
-            request.setRetryPolicy(new DefaultRetryPolicy(
-                    2000, 1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
             mRequestQueue.add(request);
         }
     }

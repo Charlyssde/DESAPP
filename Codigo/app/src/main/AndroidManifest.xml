@@ -2,16 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.photogram">
 
-    <uses-permission android:name=
-        "android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name=
-        "android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-feature android:name=
-        "android.hardware.camera2"
-        android:required="true"/>
-
-
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +16,8 @@
         android:roundIcon="@drawable/ic_app_final"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Feed.subir_foto"></activity>
+        <activity android:name=".Foto.Ver_Foto"></activity>
+        <activity android:name=".Feed.subir_foto" />
         <activity android:name=".Inicio.LoginModerador" />
         <activity android:name=".Inicio.RegistroPerfil" />
         <activity android:name=".Moderador.FeedModerador" />
@@ -35,6 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-  </application>
+
+
+    </application>
 
 </manifest>
