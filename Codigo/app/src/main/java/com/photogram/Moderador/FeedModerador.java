@@ -18,18 +18,31 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.photogram.Adapters.FotoModeradorAdapter;
 import com.photogram.Modelo.FotoModerador;
 import com.photogram.R;
+import com.photogram.servicesnetwork.ApiEndPoint;
+import com.photogram.servicesnetwork.JSONAdapter;
+import com.photogram.servicesnetwork.VolleyS;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FeedModerador extends AppCompatActivity {
 
     private String TAG = "FEED_MODERADOR";
     private RecyclerView rv;
     private FotoModeradorAdapter adapter;
+    VolleyS volley;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +54,7 @@ public class FeedModerador extends AppCompatActivity {
         rv = findViewById(R.id.rvFotosModerador);
         setFotos();
 
+        volley = VolleyS.getInstance(FeedModerador.this);
 
         LinearLayoutManager llm = new LinearLayoutManager(FeedModerador.this);
         rv.setLayoutManager(llm);
@@ -61,43 +75,66 @@ public class FeedModerador extends AppCompatActivity {
 
     }
 
-    private void setFotos() {
-        final List<FotoModerador> fotosList = getLista();
-        adapter = new FotoModeradorAdapter(fotosList, new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FotoModerador e = fotosList.get(rv.getChildAdapterPosition(view));
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(FeedModerador.this);
-                builder.setNegativeButton("Reportar cuenta", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(FeedModerador.this, "Negativo", Toast.LENGTH_LONG).show();
-                    }
-                });
-                builder.setPositiveButton("Eliminar foto", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(FeedModerador.this, "Neutral", Toast.LENGTH_LONG).show();
-                    }
-                });
-                builder.setMessage("Cuadro de dialogo");
-                builder.setCancelable(true);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
-        rv.setAdapter(adapter);
+    /*
+    *
     }
+    *
+    * */
+    private void setFotos() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, ApiEndPoint.getAllPhotos,
+                null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    final List<FotoModerador> fotosList = JSONAdapter.allFotosAdapter(response);
+                    adapter = new FotoModeradorAdapter(fotosList, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            FotoModerador e = fotosList.get(rv.getChildAdapterPosition(view));
 
-    private List<FotoModerador> getLista(){
-        List<FotoModerador> lista = new ArrayList<>();
-        FotoModerador foto = new FotoModerador();
-        lista.add(foto);
-        lista.add(foto);
-        lista.add(foto);
-        lista.add(foto);
-        return lista;
+                            AlertDialog.Builder builder = new AlertDialog.Builder(FeedModerador.this);
+                            builder.setNegativeButton("Reportar cuenta", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(FeedModerador.this, "Reportar cuenta", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            builder.setPositiveButton("Eliminar foto", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(FeedModerador.this, "Eliminar foto", Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                            builder.setMessage("Opciones:");
+                            builder.setCancelable(true);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    });
+                    rv.setAdapter(adapter);
+                } catch (JSONException e) {
+                    Toast.makeText(FeedModerador.this, "Cannot parse data", Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Testing Network");
+            }
+
+
+        })
+        {
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content Type", "application/json");
+                return headers;
+            }
+        };
+        volley.addToQueue(jsonArrayRequest);
     }
 
     @Override

@@ -43,8 +43,9 @@ public class FotoFeedAdapter extends RecyclerView.Adapter<FotoFeedAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtUsername.setText(mDataSet.get(position).getOwner().getUsername());
-
+        holder.txtUsername.setText(mDataSet.get(position).getOwner());
+        holder.imgView.setImageBitmap(mDataSet.get(position).getBitmap());
+        holder.txtNumReacciones.setText(mDataSet.get(position).getReacciones().size());
     }
 
     @Override
@@ -71,7 +72,7 @@ public class FotoFeedAdapter extends RecyclerView.Adapter<FotoFeedAdapter.ViewHo
             this.reaccion = v.findViewById(R.id.btnReaccionar);
 
             this.txtComentarios.setText("comentarios");
-            this.txtNumReacciones.setText("500");
+            //this.txtNumReacciones.setText("500");
         }
     }
 }

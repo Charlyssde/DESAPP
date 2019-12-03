@@ -35,7 +35,6 @@ public class ChatIndividualGUI extends AppCompatActivity {
         setMensajes();
 
         btnEnviar = findViewById(R.id.btn_enviar_mensaje);
-        btnFoto = findViewById(R.id.btn_enviar_foto);
         btnAudio = findViewById(R.id.btn_enviar_audio);
     }
 
