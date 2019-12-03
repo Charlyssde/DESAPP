@@ -17,10 +17,12 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
 
-        android:id="@+id/bnvMenuFeed"
-
+        android:id="@+id/bntSubirFotoFeed"
+        android:onClick="abrirFotos"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:clickable="true"
+
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -36,7 +38,7 @@
         app:menu="@menu/menu_feed"
 
 
-        />
+        tools:ignore="OnClick" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
