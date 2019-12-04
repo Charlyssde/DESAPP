@@ -2,6 +2,7 @@ package com.photogram.servicesnetwork;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 
 import com.photogram.Modelo.FotoModerador;
 import com.photogram.Modelo.Usuario;
@@ -33,7 +34,6 @@ public class JSONAdapter {
 
     public static List<FotoModerador> allFotosAdapter(JSONArray response) throws JSONException{
         final List<FotoModerador> fotos = new ArrayList<>();
-        System.out.println("Entra aquí");
         final JSONArray res = response;
         for(int i = 0; i < response.length(); i++) {
 
@@ -42,9 +42,10 @@ public class JSONAdapter {
             foto.setUsuario(jsonObject.getString("username"));
             //foto.setFecha((Date)jsonObject.get("fecha"));
             foto.setPath(jsonObject.getString("path"));
-            //int x = foto.getPath().length();
-            final String path = foto.getPath().replace("\\","/");
-            Thread thread = new Thread(new Runnable() {
+            int x = foto.getPath().length();
+            final String path = foto.getPath().substring(5, x);
+            foto.setPath(path);
+            /*Thread thread = new Thread(new Runnable() {
 
                 @Override
                 public void run() {
@@ -52,10 +53,11 @@ public class JSONAdapter {
 
                         try {
 
-                            URL url = new URL(ApiEndPoint.descargaImg + path);
+                            URL url = new URL("http://10.0.2.2:7777/static/"+ path);
                             Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                            System.out.println(bmp);
                             foto.setBitMap(bmp);
-                            System.out.println("Finaliza lo de los bitmaps");
+                            System.out.println("Finaliza lo de los bitmaps" + path);
                         } catch (MalformedURLException e) {
                             e.printStackTrace();
                         } catch (IOException e) {
@@ -70,7 +72,7 @@ public class JSONAdapter {
             });
 
             thread.start();
-
+*/
         }
         return fotos;
     }

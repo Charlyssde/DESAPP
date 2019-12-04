@@ -45,29 +45,29 @@ public class FeedModerador extends AppCompatActivity {
     private String TAG = "FEED_MODERADOR";
     private RecyclerView rv;
     private FotoModeradorAdapter adapter;
-
-    VolleyS volley;
-    RequestQueue fRequestQueue;
+    private VolleyS volley;
+    private RequestQueue fRequestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_moderador);
-
         FeedModerador.this.setTitle(R.string.titleModerdadorFeed);
-
-        rv = findViewById(R.id.rvFotosModerador);
-
 
         volley = VolleyS.getInstance(FeedModerador.this);
         fRequestQueue = volley.getRequestQueue();
 
-        setFotos();
+        rv = findViewById(R.id.rvFotosModerador);
+
+
 
         LinearLayoutManager llm = new LinearLayoutManager(FeedModerador.this);
         rv.setLayoutManager(llm);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), llm.getOrientation());
-        rv.addItemDecoration(dividerItemDecoration);
+
+        setFotos();
+        //DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), llm.getOrientation());
+        //rv.addItemDecoration(dividerItemDecoration);
+
     }
 
     @Override
