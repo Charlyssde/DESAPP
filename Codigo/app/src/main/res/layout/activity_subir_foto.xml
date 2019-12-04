@@ -36,17 +36,8 @@
 
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_camara"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="205dp"
-        android:clickable="true"
-        android:onClick="tomarFoto"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_galeria"
@@ -59,18 +50,7 @@
         android:clickable="true"
         android:onClick="abrirGaleria"
         app:srcCompat="@android:drawable/ic_menu_gallery"/>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_guardar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="75dp"
-        android:clickable="true"
-        android:onClick="guardarFoto"
 
-        app:srcCompat="@android:drawable/ic_menu_save"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_enviar"
         android:layout_width="wrap_content"
@@ -80,7 +60,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
         android:clickable="true"
-        android:onClick="subirAServidor"
+        android:onClick="subirFoto"
         app:srcCompat="@android:drawable/ic_menu_send"/>
 
 </RelativeLayout>
