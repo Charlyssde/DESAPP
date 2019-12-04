@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.photogram.Feed.Feed;
+import com.photogram.Mensajeria.ChatsGUI;
 import com.photogram.Moderador.FeedModerador;
 import com.photogram.Moderador.RegistrarModeradorDialog;
 import com.photogram.R;
@@ -75,7 +76,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), RegistrarUsuario.class);
+                Intent intent = new Intent (v.getContext(), ChatsGUI.class);
                 startActivityForResult(intent, 0);
                 finish();
             }

@@ -43,7 +43,7 @@ public class FotoModeradorAdapter extends RecyclerView.Adapter<FotoModeradorAdap
     @Override
     public void onBindViewHolder(@NonNull FotoModeradorAdapter.ViewHolder holder, int position) {
         holder.lblUsername.setText(mDataSet.get(position).getUsuario());
-        holder.imgView.setImageBitmap(mDataSet.get(position).getBitmap());
+        //holder.imgView.setImageBitmap(mDataSet.get(position).getBitmap());
     }
 
     @Override

@@ -19,9 +19,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.photogram.Adapters.FotoModeradorAdapter;
 import com.photogram.Modelo.FotoModerador;
 import com.photogram.R;
@@ -31,6 +33,7 @@ import com.photogram.servicesnetwork.VolleyS;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,7 +45,9 @@ public class FeedModerador extends AppCompatActivity {
     private String TAG = "FEED_MODERADOR";
     private RecyclerView rv;
     private FotoModeradorAdapter adapter;
+
     VolleyS volley;
+    RequestQueue fRequestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +60,7 @@ public class FeedModerador extends AppCompatActivity {
         setFotos();
 
         volley = VolleyS.getInstance(FeedModerador.this);
+        fRequestQueue = volley.getRequestQueue();
 
         LinearLayoutManager llm = new LinearLayoutManager(FeedModerador.this);
         rv.setLayoutManager(llm);
@@ -75,11 +81,6 @@ public class FeedModerador extends AppCompatActivity {
 
     }
 
-    /*
-    *
-    }
-    *
-    * */
     private void setFotos() {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, ApiEndPoint.getAllPhotos,
                 null, new Response.Listener<JSONArray>() {
@@ -90,19 +91,18 @@ public class FeedModerador extends AppCompatActivity {
                     adapter = new FotoModeradorAdapter(fotosList, new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            FotoModerador e = fotosList.get(rv.getChildAdapterPosition(view));
+                            final FotoModerador foto = fotosList.get(rv.getChildAdapterPosition(view));
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(FeedModerador.this);
                             builder.setNegativeButton("Reportar cuenta", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Toast.makeText(FeedModerador.this, "Reportar cuenta", Toast.LENGTH_LONG).show();
+
                                 }
                             });
                             builder.setPositiveButton("Eliminar foto", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Toast.makeText(FeedModerador.this, "Eliminar foto", Toast.LENGTH_LONG).show();
                                 }
                             });
 
