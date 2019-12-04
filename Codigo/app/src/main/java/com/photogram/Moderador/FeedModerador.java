@@ -57,10 +57,12 @@ public class FeedModerador extends AppCompatActivity {
         FeedModerador.this.setTitle(R.string.titleModerdadorFeed);
 
         rv = findViewById(R.id.rvFotosModerador);
-        setFotos();
+
 
         volley = VolleyS.getInstance(FeedModerador.this);
         fRequestQueue = volley.getRequestQueue();
+
+        setFotos();
 
         LinearLayoutManager llm = new LinearLayoutManager(FeedModerador.this);
         rv.setLayoutManager(llm);

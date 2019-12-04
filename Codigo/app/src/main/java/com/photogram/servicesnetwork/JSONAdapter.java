@@ -32,33 +32,46 @@ public class JSONAdapter {
 
 
     public static List<FotoModerador> allFotosAdapter(JSONArray response) throws JSONException{
-        List<FotoModerador> fotos = new ArrayList<>();
+        final List<FotoModerador> fotos = new ArrayList<>();
         System.out.println("Entra aquí");
-        URL url = null;
+        final JSONArray res = response;
+        for(int i = 0; i < response.length(); i++) {
 
-        for(int i = 0; i < response.length(); i++){
-            JSONObject jsonObject = response.getJSONObject(i);
-            FotoModerador foto = new FotoModerador();
+            JSONObject jsonObject = res.getJSONObject(i);
+            final FotoModerador foto = new FotoModerador();
             foto.setUsuario(jsonObject.getString("username"));
-            foto.setFecha((Date)jsonObject.get("fecha"));
+            //foto.setFecha((Date)jsonObject.get("fecha"));
             foto.setPath(jsonObject.getString("path"));
-            /*
-            String path = foto.getPath().substring(5,foto.getPath().length() - 1);
-            try {
+            //int x = foto.getPath().length();
+            final String path = foto.getPath().replace("\\","/");
+            Thread thread = new Thread(new Runnable() {
 
-                url = new URL(ApiEndPoint.descargaImg + path);
-                Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                foto.setBitMap(bmp);
-                System.out.println("Finaliza lo de los bitmaps");
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            */
-            fotos.add(foto);
+                @Override
+                public void run() {
+                    try {
+
+                        try {
+
+                            URL url = new URL(ApiEndPoint.descargaImg + path);
+                            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                            foto.setBitMap(bmp);
+                            System.out.println("Finaliza lo de los bitmaps");
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        fotos.add(foto);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            thread.start();
+
         }
-
         return fotos;
     }
 }
