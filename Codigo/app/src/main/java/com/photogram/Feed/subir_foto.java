@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaScannerConnection;
@@ -73,7 +74,7 @@ public class subir_foto extends AppCompatActivity {
                 R.id.btn_enviar);
         txt_idfoto = (EditText)findViewById(R.id.txt_idfoto);
 
-
+        validarPermisosAlmacenamiento();
         btn_enviar.setEnabled(false);
     }
 
@@ -82,7 +83,23 @@ public class subir_foto extends AppCompatActivity {
 
     }
 
-
+    private void validarPermisosAlmacenamiento() {
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this,
+                    "SIN ACCESO AL ALMACENAMIENTO INTERNO",
+                    Toast.LENGTH_LONG).show();
+            ActivityCompat.requestPermissions(this,
+                    new String[]{
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    }, 1);
+        }else{
+            Toast.makeText(this,
+                    "CON ACCESO AL ALMACENAMIENTO INTERNO",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
     private void uploadToServer(String filePath) {
         Retrofit retrofit = NetworkClient.getRetrofitClient(this);
         UploadAPIs uploadAPIs = retrofit.create(UploadAPIs.class);
@@ -100,13 +117,16 @@ public class subir_foto extends AppCompatActivity {
         call.enqueue(new Callback() {
             @Override
             public void onResponse(Call call, retrofit2.Response response) {
-                Toast.makeText(subir_foto.this, "Foto subida", Toast.LENGTH_SHORT).show();
+                Toast.makeText(subir_foto.this, "Foto arriba", Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             public void onFailure(Call call, Throwable t) {
-                Toast.makeText(subir_foto.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(subir_foto.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                System.err.print(t.getMessage());
+                t.printStackTrace();
+
             }
         });
     }
@@ -116,14 +136,31 @@ public class subir_foto extends AppCompatActivity {
                                     int resultCode, Intent data){
 
         if(requestCode == PICK_IMAGE && resultCode == RESULT_OK && data !=null ) {
-
-
                 this.photoURI = data.getData();
+                Log.d("******************", String.valueOf(this.photoURI));
                  path = photoURI.getPath();
+                Toast.makeText(subir_foto.this, path, Toast.LENGTH_LONG).show();
                 img_foto.setImageURI(this.photoURI);
                 foto = ((BitmapDrawable)img_foto.getDrawable()).
                         getBitmap();
                 btn_enviar.setEnabled(true);
+
+
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            // Get the cursor
+            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+            // Move to first row
+            cursor.moveToFirst();
+            //Get the column index of MediaStore.Images.Media.DATA
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            //Gets the String value in the column
+            String imgDecodableString = cursor.getString(columnIndex);
+            cursor.close();
+            Log.d("file1", String.valueOf(filePathColumn));
+            Log.d("file2", imgDecodableString);
+            this.path = imgDecodableString;
+
 
         }
     }
