@@ -28,12 +28,12 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre de usuario:"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="80dp"
+        android:text="Estado:"
         android:textColor="#ffffff "
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="80dp"/>
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/nombreUsuarotxt"

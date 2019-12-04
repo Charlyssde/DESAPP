@@ -79,6 +79,8 @@ public class subir_foto extends AppCompatActivity {
     }
 
     public void subirFoto(View v){
+
+        btn_enviar.setEnabled(false);
         uploadToServer(this.path);
 
     }
@@ -111,10 +113,12 @@ public class subir_foto extends AppCompatActivity {
         MultipartBody.Part part = MultipartBody.Part.createFormData("newImage", file.getName(), fileReqBody);
         //Create request body with text description and text media type
         RequestBody description = RequestBody.create(MediaType.parse("text/plain"), "rodrigo");
+        Toast.makeText(subir_foto.this, "Cargando foto", Toast.LENGTH_SHORT).show();
 
         //
         Call call = uploadAPIs.uploadImage(part, description);
         call.enqueue(new Callback() {
+
             @Override
             public void onResponse(Call call, retrofit2.Response response) {
                 Toast.makeText(subir_foto.this, "Foto arriba", Toast.LENGTH_SHORT).show();

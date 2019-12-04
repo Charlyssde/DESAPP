@@ -7,7 +7,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkClient {
-    private static String host = "192.168.100.46:7777";
+    private static String host = "192.168.100.168:7777";
     private static final String BASE_URL = "http://" + host + "/api/";
     private static Retrofit retrofit;
     public static Retrofit getRetrofitClient(Context context) {
