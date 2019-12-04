@@ -2,6 +2,7 @@ package com.photogram.Modelo;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.widget.ImageView;
 
 import java.util.Date;
@@ -11,6 +12,7 @@ public class FotoModerador {
     private Date fecha;
     private String path;
     private Bitmap bitmap;
+    public Image img;
 
     public String getPath() {
         return path;

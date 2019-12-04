@@ -45,29 +45,33 @@ public class FeedModerador extends AppCompatActivity {
     private String TAG = "FEED_MODERADOR";
     private RecyclerView rv;
     private FotoModeradorAdapter adapter;
-
-    VolleyS volley;
-    RequestQueue fRequestQueue;
+    private VolleyS volley;
+    private RequestQueue fRequestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_moderador);
-
         FeedModerador.this.setTitle(R.string.titleModerdadorFeed);
-
-        rv = findViewById(R.id.rvFotosModerador);
-
 
         volley = VolleyS.getInstance(FeedModerador.this);
         fRequestQueue = volley.getRequestQueue();
 
         setFotos();
 
+
+
+        rv = findViewById(R.id.rvFotosModerador);
+
         LinearLayoutManager llm = new LinearLayoutManager(FeedModerador.this);
+
         rv.setLayoutManager(llm);
+
+        System.out.println("Migaja");
+
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), llm.getOrientation());
         rv.addItemDecoration(dividerItemDecoration);
+
     }
 
     @Override
@@ -90,6 +94,7 @@ public class FeedModerador extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 try {
                     final List<FotoModerador> fotosList = JSONAdapter.allFotosAdapter(response);
+                    Log.e("TEST", "Pan " + fotosList.size());
                     adapter = new FotoModeradorAdapter(fotosList, new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -115,6 +120,7 @@ public class FeedModerador extends AppCompatActivity {
                         }
                     });
                     rv.setAdapter(adapter);
+
                 } catch (JSONException e) {
                     Toast.makeText(FeedModerador.this, "Cannot parse data", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
