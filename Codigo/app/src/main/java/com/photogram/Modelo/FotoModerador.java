@@ -9,7 +9,6 @@ import java.util.Date;
 public class FotoModerador {
     private String usuario;
     private Date fecha;
-    private byte[] bytes;
     private String path;
     private Bitmap bitmap;
 
@@ -22,15 +21,15 @@ public class FotoModerador {
     }
 
     public FotoModerador() {
-
+        usuario = "User";
     }
 
     public Bitmap getBitmap() {
         return bitmap;
     }
 
-    private void setBitMap() {
-        this.bitmap = BitmapFactory.decodeByteArray(getBytes(), 0, getBytes().length);
+    public void setBitMap(Bitmap bitMap) {
+        this.bitmap = bitmap;
     }
 
     public void setUsuario(String usuario) {
@@ -45,15 +44,6 @@ public class FotoModerador {
         this.fecha = fecha;
     }
 
-    public byte[] getBytes() {
-        return bytes;
-    }
-
-    public void setBytes(byte[] bytes) {
-        this.bytes = bytes;
-        setBitMap();
-
-    }
 
     public String getUsuario() {
         return usuario;

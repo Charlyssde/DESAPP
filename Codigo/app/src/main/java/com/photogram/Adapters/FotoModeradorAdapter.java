@@ -58,7 +58,7 @@ public class FotoModeradorAdapter extends RecyclerView.Adapter<FotoModeradorAdap
             super(v);
             lblUsername = v.findViewById(R.id.lblUsernameMod);
             imgView = v.findViewById(R.id.imageViewMod);
-            imgView.setImageResource(R.drawable.img_example);
+            //imgView.setImageResource(R.drawable.img_example);
         }
     }
 }

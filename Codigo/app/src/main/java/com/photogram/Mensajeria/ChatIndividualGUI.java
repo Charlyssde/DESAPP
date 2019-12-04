@@ -18,7 +18,6 @@ import java.util.List;
 public class ChatIndividualGUI extends AppCompatActivity {
 
     ImageButton btnEnviar;
-    ImageButton btnFoto;
     ImageButton btnAudio;
 
     ListView view;
@@ -74,13 +73,11 @@ public class ChatIndividualGUI extends AppCompatActivity {
 
     public void insertText(View view) {
         btnEnviar.setVisibility(View.VISIBLE);
-        btnAudio.setVisibility(View.INVISIBLE);
-        btnFoto.setVisibility(View.INVISIBLE);
+        btnAudio.setVisibility(View.GONE);
     }
 
     public void enviarMensaje(View view) {
-        btnEnviar.setVisibility(View.INVISIBLE);
+        btnEnviar.setVisibility(View.GONE);
         btnAudio.setVisibility(View.VISIBLE);
-        btnFoto.setVisibility(View.VISIBLE);
     }
 }

@@ -10,4 +10,7 @@ public class ApiEndPoint {
     public static String registrarModerador = baseURL + "/Moderador/";
     public static String registrarUsuario = baseURL + "/registro";
     public static String getAllPhotos = baseURL + "/img/getAllImages";
+    public static String eliminarFoto = baseURL + "";
+    public static String reportarCuenta = baseURL + "/user";
+    public static String descargaImg = baseURL + "/static/";
 }
