@@ -45,6 +45,7 @@ public class JSONAdapter {
             int x = foto.getPath().length();
             final String path = foto.getPath().substring(5, x);
             foto.setPath(path);
+            //System.out.println("----------------" + foto.getPath());
             /*Thread thread = new Thread(new Runnable() {
 
                 @Override
@@ -72,7 +73,9 @@ public class JSONAdapter {
             });
 
             thread.start();
+
 */
+            fotos.add(foto);
         }
         return fotos;
     }

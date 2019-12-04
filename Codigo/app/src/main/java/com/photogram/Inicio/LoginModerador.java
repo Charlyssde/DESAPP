@@ -70,7 +70,7 @@ public class LoginModerador extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             LoginPOJO result = JSONAdapter.loginAdapter(response);
-                            Toast.makeText(LoginModerador.this, "TK: " + result.getToken(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(LoginModerador.this, "TK: " + result.getToken(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginModerador.this, FeedModerador.class);
                             LoginModerador.this.startActivity(intent);
                             finish();

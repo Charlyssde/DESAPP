@@ -43,6 +43,7 @@ public class FotoModeradorAdapter extends RecyclerView.Adapter<FotoModeradorAdap
 
     @Override
     public void onBindViewHolder(@NonNull FotoModeradorAdapter.ViewHolder holder, int position) {
+
         holder.lblUsername.setText(mDataSet.get(position).getUsuario());
         Picasso.get().load("http://10.0.2.2:7777/static/" + mDataSet.get(position).getPath()).into(holder.imgView);
     }
@@ -53,8 +54,8 @@ public class FotoModeradorAdapter extends RecyclerView.Adapter<FotoModeradorAdap
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView lblUsername;
-        private ImageView imgView;
+        public TextView lblUsername;
+        public ImageView imgView;
         public ViewHolder(View v){
             super(v);
             lblUsername = v.findViewById(R.id.lblUsernameMod);
