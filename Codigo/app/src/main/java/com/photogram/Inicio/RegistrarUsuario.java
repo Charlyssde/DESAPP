@@ -128,7 +128,7 @@ public class RegistrarUsuario extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(RegistrarUsuario.this, "No se que madres haces",
+                        Toast.makeText(RegistrarUsuario.this, "No se que haces",
                                 Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "" + error.getMessage());
                         btnAceptar.setEnabled(true);
