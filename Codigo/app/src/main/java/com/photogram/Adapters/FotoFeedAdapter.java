@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.photogram.Modelo.Foto;
 import com.photogram.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -43,10 +44,11 @@ public class FotoFeedAdapter extends RecyclerView.Adapter<FotoFeedAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtUsername.setText(mDataSet.get(position).getOwner());
-        holder.imgView.setImageBitmap(mDataSet.get(position).getBitmap());
-        holder.txtNumReacciones.setText(mDataSet.get(position).getReacciones().size());
+        holder.txtUsername.setText(mDataSet.get(position).getUsuario());
+        //holder.txtNumReacciones.setText(mDataSet.get(position).getReacciones().size());
+        Picasso.get().load("http://10.0.2.2:7777/static/" + mDataSet.get(position).getPath()).into(holder.imgView);
     }
+
 
     @Override
     public int getItemCount() {
@@ -60,6 +62,7 @@ public class FotoFeedAdapter extends RecyclerView.Adapter<FotoFeedAdapter.ViewHo
         private ImageView imgView;
         private ImageButton reaccion;
         private ImageButton comentario;
+        private ImageButton opciones;
 
 
         public ViewHolder(View v){
@@ -70,9 +73,8 @@ public class FotoFeedAdapter extends RecyclerView.Adapter<FotoFeedAdapter.ViewHo
             this.imgView = v.findViewById(R.id.imageView);
             this.comentario = v.findViewById(R.id.btnComentar);
             this.reaccion = v.findViewById(R.id.btnReaccionar);
-
+            this.opciones = v.findViewById(R.id.btn_opciones_foto);
             this.txtComentarios.setText("comentarios");
-            //this.txtNumReacciones.setText("500");
         }
     }
 }

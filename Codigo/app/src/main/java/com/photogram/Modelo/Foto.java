@@ -9,10 +9,8 @@ import java.util.List;
 
 public class Foto {
     private String path;
-    private String owner;
+    private String usuario;
     private Date fecha;
-    private byte[] bytes;
-    private Bitmap bitmap;
     private List<Comentario> comentarios;
     private List<Reaccion> reacciones;
 
@@ -23,33 +21,33 @@ public class Foto {
 
     }
 
-    public byte[] getBytes() {
-        return bytes;
-    }
-
-    public void setBytes(byte[] bytes) {
-        this.bytes = bytes;
-        setBitmap();
-    }
-
-    public Bitmap getBitmap() {
-        return bitmap;
-    }
-
     public List<Reaccion> getReacciones() {
         return reacciones;
     }
 
-    private void setBitmap() {
-        this.bitmap = BitmapFactory.decodeByteArray(getBytes(), 0, getBytes().length);
-    }
 
     public void setPath(String path) {
         this.path = path;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public void setReacciones(List<Reaccion> reacciones) {
+        this.reacciones = reacciones;
     }
 
     public Date getFecha() {
@@ -64,7 +62,5 @@ public class Foto {
         return path;
     }
 
-    public String getOwner() {
-        return owner;
-    }
+
 }
