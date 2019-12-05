@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Perfil.EditarPerfil"></activity>
+        <activity android:name=".Feed.VerFoto" />
+        <activity android:name=".Perfil.VerPerfil"></activity>
+        <activity android:name=".Perfil.EditarPerfil" />
         <activity android:name=".Foto.Ver_Foto" />
         <activity android:name=".Feed.subir_foto" />
         <activity android:name=".Inicio.LoginModerador" />

@@ -1,12 +1,14 @@
 package com.photogram.Feed;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,26 +16,43 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.photogram.Adapters.FotoFeedAdapter;
+import com.photogram.Adapters.FotoModeradorAdapter;
 import com.photogram.Inicio.Iniciar_Sesion;
 import com.photogram.Inicio.LoginModerador;
 import com.photogram.Modelo.Foto;
+import com.photogram.Modelo.FotoModerador;
 import com.photogram.Moderador.FeedModerador;
+import com.photogram.Perfil.VerPerfil;
 import com.photogram.R;
+import com.photogram.servicesnetwork.ApiEndPoint;
+import com.photogram.servicesnetwork.JSONAdapter;
+import com.photogram.servicesnetwork.VolleyS;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Feed extends AppCompatActivity {
 
@@ -43,17 +62,23 @@ public class Feed extends AppCompatActivity {
     private FotoFeedAdapter adapter;
     private ImageButton  btnSubir;
 
+    private VolleyS volley;
+    private RequestQueue fRequestQueue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
         this.setTitle("Photogram");
 
+        volley = VolleyS.getInstance(Feed.this);
+        fRequestQueue = volley.getRequestQueue();
+
         rv = findViewById(R.id.rvFotodFeed);
 
         setMenu();
 
-        //setFotos();
+        setFotos();
 
         LinearLayoutManager llm = new LinearLayoutManager(Feed.this);
         rv.setLayoutManager(llm);
@@ -70,19 +95,47 @@ public class Feed extends AppCompatActivity {
 
 
     private void setFotos() {
-        final List<Foto> fotos = getFotos();
-
-        adapter = new FotoFeedAdapter(fotos, new View.OnClickListener() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, ApiEndPoint.getAllPhotos,
+                null, new Response.Listener<JSONArray>() {
             @Override
-            public void onClick(View view) {
-                Foto foto = fotos.get(rv.getChildAdapterPosition(view));
+            public void onResponse(JSONArray response) {
+                try {
+                    final List<Foto> fotosList = JSONAdapter.allFotosFeedAdapter(response);
+                    Log.e("TEST", "Pan " + fotosList.size());
+                    adapter = new FotoFeedAdapter(fotosList, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            final Foto foto = fotosList.get(rv.getChildAdapterPosition(view));
 
-                //TODO
-                //Aquí se amplia la vista de la foto, con el visualizar foto
+                            Intent intent = new Intent(Feed.this, VerFoto.class);
+                            startActivity(intent);
+
+                        }
+                    });
+                    rv.setAdapter(adapter);
+
+                } catch (JSONException e) {
+                    Toast.makeText(Feed.this, "Cannot parse data", Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
             }
-        });
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Testing Network");
+            }
 
-        rv.setAdapter(adapter);
+
+        })
+        {
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content Type", "application/json");
+                return headers;
+            }
+        };
+        volley.addToQueue(jsonArrayRequest);
 
 
     }
@@ -95,29 +148,20 @@ public class Feed extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
 
-                if (id == R.id.menu_subir_foto) {
-                    Intent intent = new Intent(getApplicationContext(), subir_foto.class);
-                    startActivity(intent);
-
+                switch (id){
+                    case R.id.menu_subir_foto:
+                        Intent intent = new Intent(getApplicationContext(), subir_foto.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.menu_perfil:
+                        Intent intent2 = new Intent(getApplicationContext(), VerPerfil.class);
+                        startActivity(intent2);
                 }
                 return true;
             }
+
         });
 
-    }
-
-
-
-
-    private List<Foto> getFotos() {
-        List<Foto> fotos = new ArrayList<>();
-        Foto foto = new Foto();
-        fotos.add(foto);
-        fotos.add(foto);
-        fotos.add(foto);
-        fotos.add(foto);
-
-        return fotos;
     }
 }
 

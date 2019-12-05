@@ -7,4 +7,13 @@
     <string name="nuevo_chat">Nuevo</string>
     <string name="titleModerdadorFeed">Feed Moderador</string>
     <string name="hint_mensaje">Escribe un mensaje</string>
+    <string name="estado">Estado:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="correo">correo</string>
+    <string name="guardar">Guardar</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="comentar">Comentar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
