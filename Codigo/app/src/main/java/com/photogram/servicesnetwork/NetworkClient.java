@@ -7,8 +7,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkClient {
-    private static String host = "192.168.100.168:7777";
-    private static final String BASE_URL = "http://" + host + "/api/";
+    private static String host = "192.168.100.161:7777";
+    private static final String BASE_URL = "http://" + host + "/img/new";
     private static Retrofit retrofit;
     public static Retrofit getRetrofitClient(Context context) {
         if (retrofit == null) {

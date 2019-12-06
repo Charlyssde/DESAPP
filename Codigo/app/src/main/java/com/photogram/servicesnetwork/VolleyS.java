@@ -12,8 +12,7 @@ public class VolleyS {
 
     private RequestQueue mRequestQueue;
 
-    private VolleyS (Context context){
-        mRequestQueue = Volley.newRequestQueue(context);
+    private VolleyS (Context context){ mRequestQueue = Volley.newRequestQueue(context);
     }
 
     public static VolleyS getInstance(Context context){ //Context hace referencia al contexto(clase/actividad)en la que se ejecuta la función
