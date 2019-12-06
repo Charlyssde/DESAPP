@@ -17,7 +17,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.photogram.Feed.subir_foto;
 import com.photogram.Moderador.FeedModerador;
+import com.photogram.Perfil.FinalizarPerfil;
 import com.photogram.R;
 import com.photogram.pojo.LoginPOJO;
 import com.photogram.servicesnetwork.ApiEndPoint;
@@ -120,8 +122,10 @@ public class RegistrarUsuario extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         Toast.makeText(RegistrarUsuario.this, "Registrado",
                                 Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(RegistrarUsuario.this, Iniciar_Sesion.class);
-                        RegistrarUsuario.this.startActivity(intent);
+                        Intent intent = new Intent(RegistrarUsuario.this, subir_foto.class);
+                        Bundle b = new Bundle();
+                        b.putBoolean("key", true);
+                        startActivity(intent);
                         finish();
                     }
                 },

@@ -101,14 +101,19 @@ public class Iniciar_Sesion extends AppCompatActivity {
 
 
                         SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
+                        SharedPreferences mPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+                        SharedPreferences.Editor spEditor = mPreferences.edit();
+                        spEditor.putString("USERNAME", result.getUsername());
+                        spEditor.apply();
                         SharedPreferences.Editor myEditor = myPreferences.edit();
                         myEditor.putString("TOKEN", "" + result.getToken());
+                        myEditor.putString("USERNAME", result.getUsername());
                         myEditor.commit();
 
                         Toast.makeText(Iniciar_Sesion.this, "Iniciando " , Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
-                        Iniciar_Sesion.this.startActivity(intent);
+                        startActivity(intent);
                         finish();
                     }
                 }, new Response.ErrorListener() {

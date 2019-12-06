@@ -26,6 +26,7 @@ public class JSONAdapter {
         LoginPOJO res = new LoginPOJO();
         try {
             res.setToken(jsonObject.getString("token"));
+            res.setUsername(jsonObject.getString("username"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

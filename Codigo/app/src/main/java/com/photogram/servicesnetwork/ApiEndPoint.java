@@ -12,6 +12,6 @@ public class ApiEndPoint {
     public static String getAllPhotos = baseURL + "/img/getAllImages";
     public static String eliminarFoto = baseURL + "";
     public static String reportarCuenta = baseURL + "/user";
-    public static String subirFoto = baseURL + "/img/new";
+    public static String subirFoto = baseURL + "/img/prueba";
     //public static String descargaImg = baseURL + "/static/";
 }

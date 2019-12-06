@@ -22,7 +22,7 @@
             android:backgroundTint="#ffffff "
             android:ems="10"
             android:hint="Identificador de la foto"
-            android:inputType="number"
+            android:inputType="text"
             android:textColorHint="#ffffff"
             android:textColor="#ffffff" />
 
