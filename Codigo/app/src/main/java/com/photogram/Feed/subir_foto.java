@@ -125,6 +125,9 @@ public class subir_foto extends AppCompatActivity {
     }
 
     private void uploadImage() {
+        SharedPreferences preferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+        final String username = preferences.getString("USERNAME", "");
+        Log.i("hola", username);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ApiEndPoint.subirFoto,
                 new Response.Listener<String>() {
@@ -150,7 +153,7 @@ public class subir_foto extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("username", "Rodrigo");
+                params.put("username", username);
                 params.put("image", imageToString(foto));
                 return params;
             }
