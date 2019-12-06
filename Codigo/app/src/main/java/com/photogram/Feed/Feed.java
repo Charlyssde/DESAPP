@@ -109,6 +109,9 @@ public class Feed extends AppCompatActivity {
                             final Foto foto = fotosList.get(rv.getChildAdapterPosition(view));
 
                             Intent intent = new Intent(Feed.this, VerFoto.class);
+                            //Bundle b = new Bundle();
+                            //b.putString("PATH", foto.getPath());
+                            intent.putExtra("PATH", foto.getPath());
                             startActivity(intent);
 
                         }
