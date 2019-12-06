@@ -24,9 +24,11 @@ import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.Response;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.JsonObject;
 import com.photogram.R;
 import com.photogram.servicesnetwork.ApiEndPoint;
 import com.photogram.servicesnetwork.NetworkClient;
@@ -129,13 +131,18 @@ public class subir_foto extends AppCompatActivity {
         final String username = preferences.getString("USERNAME", "");
         Log.i("hola", username);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, ApiEndPoint.subirFoto,
-                new Response.Listener<String>() {
+        Map<String, String> params = new HashMap<>();
+        params.put("username", username);
+        params.put("image", imageToString(foto));
+        JSONObject jsonObject = new JSONObject(params);
+
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, ApiEndPoint.subirFoto, jsonObject,
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(JSONObject response) {
                         try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String Response = jsonObject.getString("response");
+
+                            String Response = response.getString("response");
                             Log.i("hola", Response);
                             Toast.makeText(subir_foto.this, Response, Toast.LENGTH_LONG).show();
                             img_foto.setImageResource(0);
@@ -148,16 +155,7 @@ public class subir_foto extends AppCompatActivity {
                 public void onErrorResponse(VolleyError error) {
 
                 }
-        })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("username", username);
-                params.put("image", imageToString(foto));
-                return params;
-            }
-        };
+        });
 
         VolleyS.getInstance(subir_foto.this).addToQueue(stringRequest);
     }
