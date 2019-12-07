@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.photogram.Modelo.Foto;
 import com.photogram.R;
+import com.photogram.servicesnetwork.ApiEndPoint;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -46,7 +47,7 @@ public class FotoFeedAdapter extends RecyclerView.Adapter<FotoFeedAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtUsername.setText(mDataSet.get(position).getUsuario() + ", path: " + mDataSet.get(position).getPath());
         //holder.txtNumReacciones.setText(mDataSet.get(position).getReacciones().size());
-        Picasso.get().load("http://10.0.2.2:7777/static/" + mDataSet.get(position).getPath()).into(holder.imgView);
+        Picasso.get().load(ApiEndPoint.hostDownloads + mDataSet.get(position).getPath()).into(holder.imgView);
     }
 
 

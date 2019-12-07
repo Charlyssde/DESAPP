@@ -44,7 +44,7 @@ public class JSONAdapter {
             foto.setUsuario(jsonObject.getString("username"));
             foto.setPath(jsonObject.getString("path"));
             int x = foto.getPath().length();
-            final String path = foto.getPath().substring(5, x);
+            final String path = foto.getPath().substring(7, x);
             foto.setPath(path);
             fotos.add(foto);
         }
@@ -63,7 +63,7 @@ public class JSONAdapter {
             foto.setUsuario(jsonObject.getString("username"));
             foto.setPath(jsonObject.getString("path"));
             int x = foto.getPath().length();
-            final String path = foto.getPath().substring(5, x);
+            final String path = foto.getPath().substring(7, x);
             foto.setPath(path);
             fotos.add(foto);
         }

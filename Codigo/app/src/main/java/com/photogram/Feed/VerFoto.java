@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import com.android.volley.RequestQueue;
 import com.photogram.Adapters.ComentariosAdapter;
 import com.photogram.R;
+import com.photogram.servicesnetwork.ApiEndPoint;
 import com.photogram.servicesnetwork.VolleyS;
 import com.squareup.picasso.Picasso;
 
@@ -56,7 +57,7 @@ public class VerFoto extends AppCompatActivity {
     }
 
     private void setFoto() {
-        Picasso.get().load("http://10.0.2.2:7777/static/" + this.path).into(ivFoto);
+        Picasso.get().load(ApiEndPoint.hostDownloads + this.path).into(ivFoto);
 
     }
 }

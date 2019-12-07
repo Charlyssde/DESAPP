@@ -155,7 +155,20 @@ public class subir_foto extends AppCompatActivity {
                 public void onErrorResponse(VolleyError error) {
 
                 }
-        });
+        })
+        {
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content Type", "application/json");
+
+                SharedPreferences myPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+                String token = myPreferences.getString("TOKEN", "unknown");
+                System.out.println(token);
+                headers.put("Authorization", token);
+                return headers;
+            }
+        };
 
         VolleyS.getInstance(subir_foto.this).addToQueue(stringRequest);
     }

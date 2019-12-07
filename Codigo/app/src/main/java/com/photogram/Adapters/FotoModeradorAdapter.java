@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.photogram.R;
 import com.photogram.Modelo.FotoModerador;
+import com.photogram.servicesnetwork.ApiEndPoint;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -45,7 +46,7 @@ public class FotoModeradorAdapter extends RecyclerView.Adapter<FotoModeradorAdap
     public void onBindViewHolder(@NonNull FotoModeradorAdapter.ViewHolder holder, int position) {
 
         holder.lblUsername.setText(mDataSet.get(position).getUsuario());
-        Picasso.get().load("http://10.0.2.2:7777/static/" + mDataSet.get(position).getPath()).into(holder.imgView);
+        Picasso.get().load(ApiEndPoint.hostDownloads + mDataSet.get(position).getPath()).into(holder.imgView);
     }
 
     @Override

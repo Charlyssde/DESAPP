@@ -64,7 +64,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
             }
         });
 
-        SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences myPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
         String token = myPreferences.getString("TOKEN", "unknown");
 
         if(token != "unknown"){
@@ -105,15 +105,15 @@ public class Iniciar_Sesion extends AppCompatActivity {
                         LoginPOJO result = JSONAdapter.loginAdapter(response);
 
 
-                        SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
+                        //SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
                         SharedPreferences mPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
                         SharedPreferences.Editor spEditor = mPreferences.edit();
                         spEditor.putString("USERNAME", result.getUsername());
                         spEditor.apply();
-                        SharedPreferences.Editor myEditor = myPreferences.edit();
-                        myEditor.putString("TOKEN", "" + result.getToken());
-                        myEditor.putString("USERNAME", result.getUsername());
-                        myEditor.commit();
+                        //SharedPreferences.Editor myEditor = myPreferences.edit();
+                        //myEditor.putString("TOKEN", "" + result.getToken());
+                        //myEditor.putString("USERNAME", result.getUsername());
+                        //myEditor.commit();
 
                         Toast.makeText(Iniciar_Sesion.this, "Iniciando " , Toast.LENGTH_SHORT).show();
 
