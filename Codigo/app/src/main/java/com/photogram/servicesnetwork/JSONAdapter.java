@@ -1,23 +1,14 @@
 package com.photogram.servicesnetwork;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
-
-import com.photogram.Modelo.Foto;
-import com.photogram.Modelo.FotoModerador;
-import com.photogram.Modelo.Usuario;
+import com.photogram.modelo.Foto;
+import com.photogram.modelo.FotoModerador;
 import com.photogram.pojo.LoginPOJO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class JSONAdapter {

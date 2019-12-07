@@ -1,4 +1,4 @@
-package com.photogram.Modelo;
+package com.photogram.modelo;
 
 import java.io.Serializable;
 import java.util.Date;

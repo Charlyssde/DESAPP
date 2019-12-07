@@ -17,18 +17,18 @@
         android:roundIcon="@drawable/ic_app_final"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Perfil.EditarPerfil"></activity>
-        <activity android:name=".Feed.VerFoto" />
-        <activity android:name=".Perfil.VerPerfil"></activity>
-        <activity android:name=".Feed.subir_foto" />
-        <activity android:name=".Inicio.LoginModerador" />
-        <activity android:name=".Inicio.RegistroPerfil" />
-        <activity android:name=".Moderador.FeedModerador" />
-        <activity android:name=".Inicio.RegistrarUsuario" />
-        <activity android:name=".Feed.Feed" />
-        <activity android:name=".Mensajeria.ChatIndividualGUI" />
-        <activity android:name=".Mensajeria.ChatsGUI" />
-        <activity android:name=".Inicio.Iniciar_Sesion">
+        <activity android:name=".perfil.EditarPerfil" />
+        <activity android:name=".feed.VerFoto" />
+        <activity android:name=".perfil.VerPerfil" />
+        <activity android:name=".feed.subir_foto" />
+        <activity android:name=".inicio.LoginModerador" />
+        <activity android:name=".inicio.RegistroPerfil" />
+        <activity android:name=".moderador.FeedModerador" />
+        <activity android:name=".inicio.RegistrarUsuario" />
+        <activity android:name=".feed.Feed" />
+        <activity android:name=".mensajeria.ChatIndividualGUI" />
+        <activity android:name=".mensajeria.ChatsGUI" />
+        <activity android:name=".inicio.Iniciar_Sesion">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
