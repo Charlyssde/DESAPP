@@ -67,6 +67,11 @@ public class Iniciar_Sesion extends AppCompatActivity {
         SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
         String token = myPreferences.getString("TOKEN", "unknown");
 
+        if(token != "unknown"){
+            Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
+            startActivity(intent);
+            finish();
+        }
         Button btn = (Button) findViewById(R.id.buttonCuentaNueva);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

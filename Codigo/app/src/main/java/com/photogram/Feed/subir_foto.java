@@ -121,7 +121,7 @@ public class subir_foto extends AppCompatActivity {
 
     private String imageToString(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 35, byteArrayOutputStream);
         byte[] imgBytes = byteArrayOutputStream.toByteArray();
         return android.util.Base64.encodeToString(imgBytes, android.util.Base64.DEFAULT);
     }
