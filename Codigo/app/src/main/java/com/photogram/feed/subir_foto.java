@@ -1,11 +1,10 @@
-package com.photogram.Feed;
+package com.photogram.feed;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -21,14 +20,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.Response;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.JsonObject;
 import com.photogram.R;
 import com.photogram.servicesnetwork.ApiEndPoint;
 import com.photogram.servicesnetwork.NetworkClient;
@@ -36,10 +32,7 @@ import com.photogram.servicesnetwork.UploadAPIs;
 import com.photogram.servicesnetwork.VolleyS;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
-import java.io.InputStream;
-import java.io.FileInputStream;
 
 import android.os.StrictMode;
 
@@ -47,7 +40,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Base64;
 import java.util.Map;
 
 import okhttp3.MediaType;
@@ -90,11 +82,11 @@ public class subir_foto extends AppCompatActivity {
 
         }
 
-        img_foto = (ImageView)findViewById(R.id.img_foto);
+        img_foto = findViewById(R.id.img_foto);
 
-        btn_enviar = (FloatingActionButton)findViewById(
+        btn_enviar = findViewById(
                 R.id.btn_enviar);
-        txt_idfoto = (EditText)findViewById(R.id.txt_idfoto);
+        txt_idfoto = findViewById(R.id.txt_idfoto);
         txt_idfoto.setHint(this.bool ? "Comentario" : "Estado");
 
         validarPermisosAlmacenamiento();
