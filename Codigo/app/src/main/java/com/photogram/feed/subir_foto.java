@@ -82,6 +82,7 @@ public class subir_foto extends AppCompatActivity {
 
         }
 
+
         img_foto = findViewById(R.id.img_foto);
 
         btn_enviar = findViewById(
@@ -145,7 +146,7 @@ public class subir_foto extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
+                    Toast.makeText(subir_foto.this, error.getMessage(), Toast.LENGTH_LONG).show();
                 }
         })
         {

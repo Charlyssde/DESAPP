@@ -22,6 +22,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.photogram.adapters.FotoModeradorAdapter;
 import com.photogram.modelo.FotoModerador;
 import com.photogram.R;
@@ -31,6 +32,7 @@ import com.photogram.servicesnetwork.VolleyS;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -100,12 +102,37 @@ public class FeedModerador extends AppCompatActivity {
                             builder.setNegativeButton("Reportar cuenta", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-
+                                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.DELETE, ApiEndPoint.reportarCuenta, null,
+                                            new Response.Listener<JSONObject>() {
+                                        @Override
+                                        public void onResponse(JSONObject response) {
+                                            Toast.makeText(FeedModerador.this, response.toString(), Toast.LENGTH_LONG).show();
+                                        }
+                                    }, new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Toast.makeText(FeedModerador.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                                    volley.addToQueue(jsonObjectRequest);
                                 }
                             });
                             builder.setPositiveButton("Eliminar foto", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
+                                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, ApiEndPoint.eliminarFoto, null,
+                                            new Response.Listener<JSONObject>() {
+                                                @Override
+                                                public void onResponse(JSONObject response) {
+                                                    Toast.makeText(FeedModerador.this, response.toString(), Toast.LENGTH_LONG).show();
+                                                }
+                                            }, new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Toast.makeText(FeedModerador.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                                    volley.addToQueue(jsonObjectRequest);
                                 }
                             });
 
