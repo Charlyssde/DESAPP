@@ -69,12 +69,6 @@ public class Feed extends AppCompatActivity {
 
     }
 
-
-
-
-
-
-
     private void setFotos() {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, ApiEndPoint.getAllPhotos,
                 null, new Response.Listener<JSONArray>() {
@@ -82,7 +76,7 @@ public class Feed extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 try {
                     final List<Foto> fotosList = JSONAdapter.allFotosFeedAdapter(response);
-                    Log.e("TEST", "Pan " + fotosList.size());
+                    Log.e("hola", "Pan " + fotosList.size());
                     adapter = new FotoFeedAdapter(fotosList, new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
