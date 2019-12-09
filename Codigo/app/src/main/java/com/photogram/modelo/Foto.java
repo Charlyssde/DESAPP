@@ -3,6 +3,8 @@ package com.photogram.modelo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import com.photogram.modelo.Comentario;
+import com.photogram.modelo.Reaccion;
 
 public class Foto {
     private String path;
@@ -10,6 +12,7 @@ public class Foto {
     private Date fecha;
     private List<Comentario> comentarios;
     private List<Reaccion> reacciones;
+    private String fotoId;
 
     public Foto() {
 
@@ -22,6 +25,9 @@ public class Foto {
         return reacciones;
     }
 
+    public void setFotoId(String fotoId) { this.fotoId = fotoId; }
+
+    public String getFotoId() {return this.fotoId; }
 
     public void setPath(String path) {
         this.path = path;

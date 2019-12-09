@@ -1,6 +1,7 @@
 package com.photogram.feed;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -84,8 +85,11 @@ public class Feed extends AppCompatActivity {
                             final Foto foto = fotosList.get(rv.getChildAdapterPosition(view));
                             Gson gson = new Gson();
                             String jsonFoto = gson.toJson(foto);
+                            SharedPreferences preferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+                            final String username = preferences.getString("USERNAME", "");
                             Intent intent = new Intent(Feed.this, VerFoto.class);
                             intent.putExtra("jsonFoto", jsonFoto);
+                            intent.putExtra("username", username);
                             //Bundle b = new Bundle();
                             //b.putString("PATH", foto.getPath());
                             //intent.putExtra("PATH", foto.getPath());

@@ -3,9 +3,11 @@ package com.photogram.modelo;
 public class Comentario {
 
     private String contenido;
-    private String usuario;
+    private String username;
 
-    public Comentario() {
+    public Comentario(String username, String contenido) {
+        this.username = username;
+        this.contenido = contenido;
     }
 
     public String getContenido() {
@@ -17,10 +19,10 @@ public class Comentario {
     }
 
     public String getUsuario() {
-        return usuario;
+        return username;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuario(String username) {
+        this.username = username;
     }
 }

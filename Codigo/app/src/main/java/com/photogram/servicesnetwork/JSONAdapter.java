@@ -1,14 +1,19 @@
 package com.photogram.servicesnetwork;
 
+import android.util.Log;
+
 import com.photogram.modelo.Foto;
 import com.photogram.modelo.FotoModerador;
 import com.photogram.pojo.LoginPOJO;
+import com.photogram.modelo.Comentario;
+import com.photogram.modelo.Reaccion;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class JSONAdapter {
@@ -46,13 +51,33 @@ public class JSONAdapter {
 
         final List<Foto> fotos = new ArrayList<>();
         final JSONArray res = response;
+        final List<Comentario> comentarios = new ArrayList<>();
+        final List<Reaccion> reacciones = new ArrayList<>();
         for(int i = 0; i < response.length(); i++) {
 
             JSONObject jsonObject = res.getJSONObject(i);
             final Foto foto = new Foto();
-            //foto.setFecha((Date)jsonObject.get("fecha"));
+            String fechaJS = jsonObject.getString("fecha");
+            Long milisegundos = Long.parseLong(fechaJS);
+            Date fecha = new Date(milisegundos);
+            foto.setFecha(fecha);
             foto.setUsuario(jsonObject.getString("username"));
             foto.setPath(jsonObject.getString("path"));
+            JSONArray jsonComentarios = jsonObject.getJSONArray("comentarios");
+            foto.setFotoId(jsonObject.getString("_id"));
+            for(int j = 0; j < jsonComentarios.length(); j++) {
+                JSONObject JsonComentario = jsonComentarios.getJSONObject(j);
+                Comentario comentario =  new Comentario(JsonComentario.getString("username"), JsonComentario.getString("contenido"));
+                comentarios.add(comentario);
+            }
+            JSONArray jsonReacciones = jsonObject.getJSONArray("comentarios");
+            for(int j = 0; j < jsonReacciones.length(); j++) {
+                JSONObject JsonReaccion = jsonReacciones.getJSONObject(j);
+                Reaccion reaccion =  new Reaccion(JsonReaccion.getString("username"));
+                reacciones.add(reaccion);
+            }
+            foto.setReacciones(reacciones);
+            foto.setComentarios(comentarios);
             int x = foto.getPath().length();
             final String path = foto.getPath().substring(7, x);
             foto.setPath(path);
