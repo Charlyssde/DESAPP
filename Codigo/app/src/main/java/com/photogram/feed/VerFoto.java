@@ -1,6 +1,8 @@
 package com.photogram.feed;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.SharedPreferences;
@@ -68,8 +70,7 @@ public class VerFoto extends AppCompatActivity {
         final Foto foto = gson.fromJson(json, Foto.class);
         volley = VolleyS.getInstance(VerFoto.this);
         fRequestQueue = volley.getRequestQueue();
-
-        //rv = findViewById(R.id.rvComentarios);
+        rv = findViewById(R.id.rvComentarios);
         etComentarioNuevo = findViewById(R.id.txt_new_comentario);
         ivFoto = findViewById(R.id.imageView_comentarios);
         tvUsername = findViewById(R.id.txtUsername);
@@ -79,7 +80,13 @@ public class VerFoto extends AppCompatActivity {
         this.username = getIntent().getStringExtra("username");
         tvUsername.setText(foto.getUsuario());
         this.comentarios = foto.getComentarios();
+        Log.i("HOLAHOLAHOLA","" + foto.getComentarios().size());
         this.reacciones = foto.getReacciones();
+
+        LinearLayoutManager llm = new LinearLayoutManager(VerFoto.this);
+        rv.setLayoutManager(llm);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), llm.getOrientation());
+        rv.addItemDecoration(dividerItemDecoration);
 
         for(Reaccion reaccion : foto.getReacciones()) {
             Log.i("hola", reaccion.getUsername() + " " + this.username);
@@ -90,7 +97,7 @@ public class VerFoto extends AppCompatActivity {
 
         Picasso.get().load(ApiEndPoint.hostDownloads + foto.getPath()).into(ivFoto);
 
-        //setComentarios();
+        setComentarios();
         Log.i("hola", json);
 
         //Bundle b = getIntent().getExtras();
