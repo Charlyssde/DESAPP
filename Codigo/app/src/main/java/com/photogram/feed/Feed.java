@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
 import com.photogram.adapters.FotoFeedAdapter;
 import com.photogram.modelo.Foto;
 import com.photogram.perfil.VerPerfil;
@@ -76,16 +77,18 @@ public class Feed extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 try {
                     final List<Foto> fotosList = JSONAdapter.allFotosFeedAdapter(response);
-                    Log.e("hola", "Pan " + fotosList.size());
+                    Log.e("TEST", "Pan " + fotosList.size());
                     adapter = new FotoFeedAdapter(fotosList, new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             final Foto foto = fotosList.get(rv.getChildAdapterPosition(view));
-
+                            Gson gson = new Gson();
+                            String jsonFoto = gson.toJson(foto);
                             Intent intent = new Intent(Feed.this, VerFoto.class);
+                            intent.putExtra("jsonFoto", jsonFoto);
                             //Bundle b = new Bundle();
                             //b.putString("PATH", foto.getPath());
-                            intent.putExtra("PATH", foto.getPath());
+                            //intent.putExtra("PATH", foto.getPath());
                             startActivity(intent);
 
                         }
