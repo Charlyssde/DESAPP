@@ -9,6 +9,7 @@ public class FotoModerador {
     private String usuario;
     private Date fecha;
     private String path;
+    private String fotoId;
 
     public String getPath() {
         return path;
@@ -20,6 +21,10 @@ public class FotoModerador {
 
     public FotoModerador() {
     }
+
+    public void setFotoId(String fotoId) { this.fotoId = fotoId; }
+
+    public String getFotoId() {return this.fotoId; }
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;

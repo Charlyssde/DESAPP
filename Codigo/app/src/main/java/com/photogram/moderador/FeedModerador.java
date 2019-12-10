@@ -102,7 +102,7 @@ public class FeedModerador extends AppCompatActivity {
                             builder.setNegativeButton("Reportar cuenta", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.DELETE, ApiEndPoint.reportarCuenta, null,
+                                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, ApiEndPoint.reportarCuenta + foto.getUsuario(), null,
                                             new Response.Listener<JSONObject>() {
                                         @Override
                                         public void onResponse(JSONObject response) {
@@ -120,7 +120,7 @@ public class FeedModerador extends AppCompatActivity {
                             builder.setPositiveButton("Eliminar foto", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, ApiEndPoint.eliminarFoto, null,
+                                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.DELETE, ApiEndPoint.eliminarFoto + foto.getFotoId(), null,
                                             new Response.Listener<JSONObject>() {
                                                 @Override
                                                 public void onResponse(JSONObject response) {

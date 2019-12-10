@@ -37,6 +37,7 @@ public class JSONAdapter {
 
             JSONObject jsonObject = res.getJSONObject(i);
             final FotoModerador foto = new FotoModerador();
+            foto.setFotoId(jsonObject.getString("_id"));
             foto.setUsuario(jsonObject.getString("username"));
             foto.setPath(jsonObject.getString("path"));
             int x = foto.getPath().length();
@@ -58,24 +59,15 @@ public class JSONAdapter {
             JSONObject jsonObject = res.getJSONObject(i);
             final Foto foto = new Foto();
             String fechaJS = jsonObject.getString("fecha");
-            Long milisegundos = Long.parseLong(fechaJS);
-            Date fecha = new Date(milisegundos);
-            foto.setFecha(fecha);
+            foto.setFotoId(jsonObject.getString("_id"));
+            //Long milisegundos = Long.parseLong(fechaJS);
+            //Date fecha = new Date(milisegundos);
+            //foto.setFecha(fecha);
             foto.setUsuario(jsonObject.getString("username"));
             foto.setPath(jsonObject.getString("path"));
             JSONArray jsonComentarios = jsonObject.getJSONArray("comentarios");
             foto.setFotoId(jsonObject.getString("_id"));
-            for(int j = 0; j < jsonComentarios.length(); j++) {
-                JSONObject JsonComentario = jsonComentarios.getJSONObject(j);
-                Comentario comentario =  new Comentario(JsonComentario.getString("username"), JsonComentario.getString("contenido"));
-                comentarios.add(comentario);
-            }
             JSONArray jsonReacciones = jsonObject.getJSONArray("comentarios");
-            for(int j = 0; j < jsonReacciones.length(); j++) {
-                JSONObject JsonReaccion = jsonReacciones.getJSONObject(j);
-                Reaccion reaccion =  new Reaccion(JsonReaccion.getString("username"));
-                reacciones.add(reaccion);
-            }
             foto.setReacciones(reacciones);
             foto.setComentarios(comentarios);
             int x = foto.getPath().length();

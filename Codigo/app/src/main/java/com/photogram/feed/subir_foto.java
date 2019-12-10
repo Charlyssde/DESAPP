@@ -146,7 +146,7 @@ public class subir_foto extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(subir_foto.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(subir_foto.this, error.getMessage(), Toast.LENGTH_LONG).show();
                 }
         })
         {
@@ -164,6 +164,9 @@ public class subir_foto extends AppCompatActivity {
         };
 
         VolleyS.getInstance(subir_foto.this).addToQueue(stringRequest);
+        Intent intent = new Intent(subir_foto.this, Feed.class);
+        startActivity(intent);
+        finish();
     }
 
     //ya no sirve uploadToServer

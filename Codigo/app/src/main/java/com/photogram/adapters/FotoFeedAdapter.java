@@ -45,7 +45,7 @@ public class FotoFeedAdapter extends RecyclerView.Adapter<FotoFeedAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtUsername.setText(mDataSet.get(position).getUsuario() + ", path: " + mDataSet.get(position).getPath());
+        holder.txtUsername.setText(mDataSet.get(position).getUsuario());
         //holder.txtNumReacciones.setText(mDataSet.get(position).getReacciones().size());
         Picasso.get().load(ApiEndPoint.hostDownloads + mDataSet.get(position).getPath()).into(holder.imgView);
     }

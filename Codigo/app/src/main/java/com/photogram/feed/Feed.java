@@ -78,13 +78,14 @@ public class Feed extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 try {
                     final List<Foto> fotosList = JSONAdapter.allFotosFeedAdapter(response);
-                    Log.e("TEST", "Pan " + fotosList.size());
+                    //Log.e("TEST", "Pan " + fotosList.size());
                     adapter = new FotoFeedAdapter(fotosList, new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            final Foto foto = fotosList.get(rv.getChildAdapterPosition(view));
+                            Foto foto = fotosList.get(rv.getChildAdapterPosition(view));
                             Gson gson = new Gson();
                             String jsonFoto = gson.toJson(foto);
+                            Log.i("JSOOOONNNN","" + jsonFoto);
                             SharedPreferences preferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
                             final String username = preferences.getString("USERNAME", "");
                             Intent intent = new Intent(Feed.this, VerFoto.class);
