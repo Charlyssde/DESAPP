@@ -17,6 +17,7 @@
         android:roundIcon="@drawable/ic_app_final"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".mensajeria.IniciarChat"></activity>
         <activity android:name=".perfil.EditarPerfil" />
         <activity android:name=".feed.VerFoto" />
         <activity android:name=".perfil.VerPerfil" />

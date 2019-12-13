@@ -6,11 +6,14 @@ public class Usuario {
     private String username;
 
     public Usuario() {
-        this.username = "username test";
     }
 
     public String getUsername() {
-        return username + generateRndm() ;
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     private int generateRndm(){
