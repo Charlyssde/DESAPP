@@ -1,0 +1,41 @@
+syntax = "proto2";
+
+message Mensaje {
+	optional string id = 1;
+	required Usuario sender =2;
+	required string content = 3;
+	required Usuario receiver = 4;
+	extensions 77 to 78;
+}
+
+message Archivo {
+	extend Mensaje {
+		optional Archivo archivo = 77;
+	}
+	optional bytes contenido = 1;
+	optional string ruta = 2;
+}
+
+message Texto {
+	extend Mensaje{
+		optional Texto texto = 78;
+	}
+	required string contenido = 1;
+	required bool editado = 2;
+}
+
+message Usuario {
+	required string username = 1;
+}
+
+message Empty{
+	required string response = 1;
+}
+
+service Chat {
+	//rpc iniciarConversacion(Conversacion) returns (Empty);
+	rpc recibirMensajes(Usuario) returns (stream Mensaje);
+	rpc enviarMensaje(Mensaje) returns (Empty);
+}
+	
+	
