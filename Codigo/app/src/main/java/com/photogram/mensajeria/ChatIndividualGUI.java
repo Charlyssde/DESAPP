@@ -2,6 +2,7 @@ package com.photogram.mensajeria;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -19,6 +20,7 @@ public class ChatIndividualGUI extends AppCompatActivity {
     private ImageButton btnEnviar;
     private ImageButton btnAudio;
     private String contact;
+    private String me;
 
     private ListView view;
     private MensajesAdapter adapter;
@@ -31,6 +33,9 @@ public class ChatIndividualGUI extends AppCompatActivity {
         this.contact = getIntent().getStringExtra("username");
         this.setTitle(this.contact);
 
+        SharedPreferences myPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+        this.me = myPreferences.getString("USERNAME", "unknown");
+
         view = findViewById(R.id.lista_mensajes);
 
         setMensajes();
@@ -41,7 +46,7 @@ public class ChatIndividualGUI extends AppCompatActivity {
 
     private void setMensajes() {
         final List<Mensaje> msj = getMensajes();
-        adapter = new MensajesAdapter(msj, new View.OnLongClickListener() {
+        adapter = new MensajesAdapter(this.me,msj, new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 return false;
@@ -53,22 +58,6 @@ public class ChatIndividualGUI extends AppCompatActivity {
 
     private List<Mensaje> getMensajes() {
         List<Mensaje> mensajes = new ArrayList<>();
-        Mensaje m;
-        m = new Mensaje();
-        m.setMine(true);
-        mensajes.add(m);
-        m = new Mensaje();
-        m.setMine(false);
-        mensajes.add(m);
-        m = new Mensaje();
-        m.setMine(true);
-        mensajes.add(m);
-        m = new Mensaje();
-        m.setMine(false);
-        mensajes.add(m);
-        m = new Mensaje();
-        m.setMine(false);
-        mensajes.add(m);
 
         return mensajes;
     }

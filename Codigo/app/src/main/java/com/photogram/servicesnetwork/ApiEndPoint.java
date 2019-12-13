@@ -8,10 +8,11 @@ public class ApiEndPoint {
     public static String hostDownloads = "http://10.0.2.2:7777/static/";
 
     public static String login = baseURL + "/login";
-    public static String loginModerador = baseURL + "/";
-    public static String registrarModerador = baseURL + "/";
+    public static String loginModerador = baseURL + "/loginModerador/";
+    public static String registrarModerador = baseURL + "/Moderador/";
     public static String registrarUsuario = baseURL + "/user";
     public static String getAllPhotos = baseURL + "/img/all";
+    public static String getPhoto = baseURL + "/img/";
     public static String eliminarFoto = baseURL + "/img/";
     public static String reportarCuenta = baseURL + "/mod/";
     public static String subirFoto = baseURL + "/img/prueba";
