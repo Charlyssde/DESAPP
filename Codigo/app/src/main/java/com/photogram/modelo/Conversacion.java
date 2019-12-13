@@ -12,9 +12,6 @@ public class Conversacion implements Serializable {
 
     public Conversacion(Usuario destinatario) {
         this.destinatario = destinatario;
-        mensajes = new ArrayList<>();
-        Mensaje m = new Mensaje();
-        lastMensaje = m.getContenido();
     }
 
     public String getLastMensaje() {
