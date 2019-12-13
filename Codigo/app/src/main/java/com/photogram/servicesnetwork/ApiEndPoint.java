@@ -17,5 +17,7 @@ public class ApiEndPoint {
     public static String subirFoto = baseURL + "/img/prueba";
     public static String comentar = baseURL + "/comment";
     public static String reaccionar = baseURL + "/reaction";
+    public static String getUser = baseURL + "/user/";
+    public static String getAllUsuers = baseURL + "/user/all";
     //public static String descargaImg = baseURL + "/static/";
 }

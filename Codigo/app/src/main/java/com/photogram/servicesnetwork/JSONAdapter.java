@@ -2,8 +2,11 @@ package com.photogram.servicesnetwork;
 
 import android.util.Log;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.photogram.modelo.Foto;
 import com.photogram.modelo.FotoModerador;
+import com.photogram.modelo.Usuario;
 import com.photogram.pojo.LoginPOJO;
 import com.photogram.modelo.Comentario;
 import com.photogram.modelo.Reaccion;
@@ -77,6 +80,31 @@ public class JSONAdapter {
         }
         return fotos;
 
+    }
+
+    public static List<Usuario> usersAdapter(JSONArray response) throws JSONException{
+
+        List<Usuario> usuarios =  new ArrayList<>();
+
+        for( int i = 0; i < response.length(); i++){
+            final Usuario usuario = new Usuario();
+            JSONObject jsonObject = response.getJSONObject(i);
+            usuario.setUsername(jsonObject.getString("username"));
+            usuarios.add(usuario);
+        }
+        return usuarios;
+    }
+
+    public static List<Usuario> oneUserAdapter(JSONObject jsonObject){
+        List<Usuario> usuarios = new ArrayList<>();
+        Usuario usuario = new Usuario();
+        try{
+            usuario.setUsername(jsonObject.getString("username"));
+            usuarios.add(usuario);
+        }catch (Exception ex){
+
+        }
+        return usuarios;
     }
 
 

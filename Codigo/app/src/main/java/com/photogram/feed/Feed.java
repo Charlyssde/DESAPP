@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -24,6 +26,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.photogram.adapters.FotoFeedAdapter;
+import com.photogram.mensajeria.ChatsGUI;
 import com.photogram.modelo.Foto;
 import com.photogram.perfil.VerPerfil;
 import com.photogram.R;
@@ -151,7 +154,26 @@ public class Feed extends AppCompatActivity {
     }
 
     public void abrirFotos(View view) {
-    }}
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_chats, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_chats:
+                Intent intent3 = new Intent(Feed.this, ChatsGUI.class);
+                startActivity(intent3);
+        }
+        return true;
+    }
+}
+
 
 
 

@@ -16,17 +16,20 @@ import java.util.List;
 
 public class ChatIndividualGUI extends AppCompatActivity {
 
-    ImageButton btnEnviar;
-    ImageButton btnAudio;
+    private ImageButton btnEnviar;
+    private ImageButton btnAudio;
+    private String contact;
 
-    ListView view;
+    private ListView view;
     private MensajesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_individual_gui);
-        this.setTitle("Chat");
+
+        this.contact = getIntent().getStringExtra("username");
+        this.setTitle(this.contact);
 
         view = findViewById(R.id.lista_mensajes);
 
@@ -78,5 +81,7 @@ public class ChatIndividualGUI extends AppCompatActivity {
     public void enviarMensaje(View view) {
         btnEnviar.setVisibility(View.GONE);
         btnAudio.setVisibility(View.VISIBLE);
+
+        //Se envía el mensaje
     }
 }
