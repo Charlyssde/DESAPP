@@ -70,7 +70,17 @@ public class JSONAdapter {
             foto.setPath(jsonObject.getString("path"));
             JSONArray jsonComentarios = jsonObject.getJSONArray("comentarios");
             foto.setFotoId(jsonObject.getString("_id"));
-            JSONArray jsonReacciones = jsonObject.getJSONArray("comentarios");
+            JSONArray jsonReacciones = jsonObject.getJSONArray("reacciones");
+            for(int j = 0; j < jsonComentarios.length(); j++) {
+                JSONObject JsonComentario = jsonComentarios.getJSONObject(j);
+                Comentario comentario =  new Comentario(JsonComentario.getString("username"), JsonComentario.getString("contenido"));
+                comentarios.add(comentario);
+            }
+            for(int j = 0; j < jsonReacciones.length(); j++) {
+                JSONObject JsonReaccion = jsonReacciones.getJSONObject(j);
+                Reaccion reaccion =  new Reaccion(JsonReaccion.getString("username"));
+                reacciones.add(reaccion);
+            }
             foto.setReacciones(reacciones);
             foto.setComentarios(comentarios);
             int x = foto.getPath().length();
