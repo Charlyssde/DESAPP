@@ -52,7 +52,20 @@
             android:layout_marginRight="20dp"
             android:text="STATUS"
             />
+        <EditText
+            android:id="@+id/message1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <Button
+            android:id="@+id/enviar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="enviar"
+            android:textColor="@color/white"
+            />
     </LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/container_fragment_fotos"

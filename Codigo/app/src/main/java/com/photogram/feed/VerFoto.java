@@ -80,7 +80,6 @@ public class VerFoto extends AppCompatActivity {
         this.username = getIntent().getStringExtra("username");
         tvUsername.setText(foto.getUsuario());
         this.comentarios = foto.getComentarios();
-        Log.i("HOLAHOLAHOLA","" + foto.getComentarios().size());
         this.reacciones = foto.getReacciones();
 
         LinearLayoutManager llm = new LinearLayoutManager(VerFoto.this);

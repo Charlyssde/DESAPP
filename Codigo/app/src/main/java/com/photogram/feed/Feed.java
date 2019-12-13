@@ -139,7 +139,10 @@ public class Feed extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.menu_perfil:
+                        SharedPreferences preferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+                        final String username = preferences.getString("USERNAME", "");
                         Intent intent2 = new Intent(getApplicationContext(), VerPerfil.class);
+                        intent2.putExtra("username", username);
                         startActivity(intent2);
                 }
                 return true;
