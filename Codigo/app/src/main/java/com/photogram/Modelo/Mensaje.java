@@ -4,31 +4,47 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Mensaje implements Serializable {
-    private String contenido = "cont";
-    private Date fecha;
-    private Usuario remitente;
-    private boolean isMine;
+    private String content = "cont";
+    private Date date;
+    private Usuario sender;
+    private Usuario receiver;
 
     public Mensaje() {
     }
 
-    public boolean isMine() {
-        return isMine;
+    public String getContent() {
+        return content;
     }
 
-    public void setMine(boolean mine) {
-        isMine = mine;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getContenido() {
-        return contenido;
+    public Date getDate() {
+        return date;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public Usuario getRemitente() {
-        return remitente;
+    public Usuario getSender() {
+        return sender;
     }
+
+    public void setSender(Usuario sender) {
+        this.sender = sender;
+    }
+
+    public Usuario getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(Usuario receiver) {
+        this.receiver = receiver;
+    }
+
+
+
+
 }

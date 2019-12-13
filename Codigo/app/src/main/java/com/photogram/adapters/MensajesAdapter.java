@@ -2,6 +2,7 @@ package com.photogram.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,16 @@ import com.photogram.R;
 
 import java.util.List;
 
+import static android.media.MediaCodec.MetricsConstants.MODE;
+
 public class MensajesAdapter extends BaseAdapter {
-    List<Mensaje> mensajes;
+    private String me;
+    private List<Mensaje> mensajes;
     private View.OnLongClickListener listener;
     private Context context;
 
-    public MensajesAdapter(List<Mensaje> mensajes, View.OnLongClickListener listener, Context context) {
+    public MensajesAdapter(String me, List<Mensaje> mensajes, View.OnLongClickListener listener, Context context) {
+        this.me = me;
         this.mensajes = mensajes;
         this.listener = listener;
         this.context = context;
@@ -48,16 +53,16 @@ public class MensajesAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         Mensaje m = mensajes.get(i);
 
-        if (m.isMine()) { // this message was sent by us so let's create a basic chat bubble on the right
+        if (m.getSender().equals(this.me)) { // this message was sent by us so let's create a basic chat bubble on the right
             view = inflater.inflate(R.layout.list_mensaje, null);
             holder.messageBody = view.findViewById(R.id.message_body);
             view.setTag(holder);
-            holder.messageBody.setText(m.getContenido());
+            holder.messageBody.setText(m.getContent());
         } else { // this message was sent by someone else so let's create an advanced chat bubble on the left
             view = inflater.inflate(R.layout.list_mensaje_recibido, null);
             holder.messageBody = view.findViewById(R.id.message_body_recibido);
             view.setTag(holder);
-            holder.messageBody.setText(m.getContenido());
+            holder.messageBody.setText(m.getContent());
         }
 
         return view;

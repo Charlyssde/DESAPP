@@ -2,8 +2,11 @@ package com.photogram.servicesnetwork;
 
 import android.util.Log;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.photogram.modelo.Foto;
 import com.photogram.modelo.FotoModerador;
+import com.photogram.modelo.Usuario;
 import com.photogram.pojo.LoginPOJO;
 import com.photogram.modelo.Comentario;
 import com.photogram.modelo.Reaccion;
@@ -67,7 +70,17 @@ public class JSONAdapter {
             foto.setPath(jsonObject.getString("path"));
             JSONArray jsonComentarios = jsonObject.getJSONArray("comentarios");
             foto.setFotoId(jsonObject.getString("_id"));
-            JSONArray jsonReacciones = jsonObject.getJSONArray("comentarios");
+            JSONArray jsonReacciones = jsonObject.getJSONArray("reacciones");
+            for(int j = 0; j < jsonComentarios.length(); j++) {
+                JSONObject JsonComentario = jsonComentarios.getJSONObject(j);
+                Comentario comentario =  new Comentario(JsonComentario.getString("username"), JsonComentario.getString("contenido"));
+                comentarios.add(comentario);
+            }
+            for(int j = 0; j < jsonReacciones.length(); j++) {
+                JSONObject JsonReaccion = jsonReacciones.getJSONObject(j);
+                Reaccion reaccion =  new Reaccion(JsonReaccion.getString("username"));
+                reacciones.add(reaccion);
+            }
             foto.setReacciones(reacciones);
             foto.setComentarios(comentarios);
             int x = foto.getPath().length();
@@ -77,6 +90,31 @@ public class JSONAdapter {
         }
         return fotos;
 
+    }
+
+    public static List<Usuario> usersAdapter(JSONArray response) throws JSONException{
+
+        List<Usuario> usuarios =  new ArrayList<>();
+
+        for( int i = 0; i < response.length(); i++){
+            final Usuario usuario = new Usuario();
+            JSONObject jsonObject = response.getJSONObject(i);
+            usuario.setUsername(jsonObject.getString("username"));
+            usuarios.add(usuario);
+        }
+        return usuarios;
+    }
+
+    public static List<Usuario> oneUserAdapter(JSONObject jsonObject){
+        List<Usuario> usuarios = new ArrayList<>();
+        Usuario usuario = new Usuario();
+        try{
+            usuario.setUsername(jsonObject.getString("username"));
+            usuarios.add(usuario);
+        }catch (Exception ex){
+
+        }
+        return usuarios;
     }
 
 

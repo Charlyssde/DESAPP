@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.photogram.adapters.ChatsListAdapter;
@@ -24,6 +25,7 @@ public class ChatsGUI extends AppCompatActivity {
     private String TAG = "CHATS_GUI";
     private RecyclerView rv;
     private ChatsListAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +74,18 @@ public class ChatsGUI extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_chat_list, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id){
+            case R.id.m_nuevo_chat:
+                Intent intent = new Intent(ChatsGUI.this, IniciarChat.class);
+                startActivity(intent);
+        }
         return true;
     }
 }

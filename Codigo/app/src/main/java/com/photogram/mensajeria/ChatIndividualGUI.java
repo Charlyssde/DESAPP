@@ -2,6 +2,7 @@ package com.photogram.mensajeria;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -16,17 +17,24 @@ import java.util.List;
 
 public class ChatIndividualGUI extends AppCompatActivity {
 
-    ImageButton btnEnviar;
-    ImageButton btnAudio;
+    private ImageButton btnEnviar;
+    private ImageButton btnAudio;
+    private String contact;
+    private String me;
 
-    ListView view;
+    private ListView view;
     private MensajesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_individual_gui);
-        this.setTitle("Chat");
+
+        this.contact = getIntent().getStringExtra("username");
+        this.setTitle(this.contact);
+
+        SharedPreferences myPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+        this.me = myPreferences.getString("USERNAME", "unknown");
 
         view = findViewById(R.id.lista_mensajes);
 
@@ -38,7 +46,7 @@ public class ChatIndividualGUI extends AppCompatActivity {
 
     private void setMensajes() {
         final List<Mensaje> msj = getMensajes();
-        adapter = new MensajesAdapter(msj, new View.OnLongClickListener() {
+        adapter = new MensajesAdapter(this.me,msj, new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 return false;
@@ -50,22 +58,6 @@ public class ChatIndividualGUI extends AppCompatActivity {
 
     private List<Mensaje> getMensajes() {
         List<Mensaje> mensajes = new ArrayList<>();
-        Mensaje m;
-        m = new Mensaje();
-        m.setMine(true);
-        mensajes.add(m);
-        m = new Mensaje();
-        m.setMine(false);
-        mensajes.add(m);
-        m = new Mensaje();
-        m.setMine(true);
-        mensajes.add(m);
-        m = new Mensaje();
-        m.setMine(false);
-        mensajes.add(m);
-        m = new Mensaje();
-        m.setMine(false);
-        mensajes.add(m);
 
         return mensajes;
     }
@@ -78,5 +70,7 @@ public class ChatIndividualGUI extends AppCompatActivity {
     public void enviarMensaje(View view) {
         btnEnviar.setVisibility(View.GONE);
         btnAudio.setVisibility(View.VISIBLE);
+
+        //Se envía el mensaje
     }
 }
