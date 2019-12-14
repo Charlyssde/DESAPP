@@ -6,8 +6,8 @@ import java.util.Date;
 public class Mensaje implements Serializable {
     private String content = "cont";
     private Date date;
-    private Usuario sender;
-    private Usuario receiver;
+    private String sender;
+    private String receiver;
 
     public Mensaje() {
     }
@@ -28,19 +28,19 @@ public class Mensaje implements Serializable {
         this.date = date;
     }
 
-    public Usuario getSender() {
+    public String getSender() {
         return sender;
     }
 
-    public void setSender(Usuario sender) {
+    public void setSender(String sender) {
         this.sender = sender;
     }
 
-    public Usuario getReceiver() {
+    public String getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(Usuario receiver) {
+    public void setReceiver(String receiver) {
         this.receiver = receiver;
     }
 

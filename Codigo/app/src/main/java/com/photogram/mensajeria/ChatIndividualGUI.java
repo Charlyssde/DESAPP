@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -21,6 +22,7 @@ public class ChatIndividualGUI extends AppCompatActivity {
     private ImageButton btnAudio;
     private String contact;
     private String me;
+    private EditText txtMensaje;
 
     private ListView view;
     private MensajesAdapter adapter;
@@ -42,6 +44,7 @@ public class ChatIndividualGUI extends AppCompatActivity {
 
         btnEnviar = findViewById(R.id.btn_enviar_mensaje);
         btnAudio = findViewById(R.id.btn_enviar_audio);
+        txtMensaje = findViewById(R.id.txt_mensaje);
     }
 
     private void setMensajes() {
@@ -59,6 +62,26 @@ public class ChatIndividualGUI extends AppCompatActivity {
     private List<Mensaje> getMensajes() {
         List<Mensaje> mensajes = new ArrayList<>();
 
+        Mensaje m = new Mensaje();
+        m.setSender(me);
+        m.setContent("Message test");
+        Mensaje m2 = new Mensaje();
+        m2.setSender("Other");
+        m2.setContent("Message test response");
+        mensajes.add(m);
+        mensajes.add(m2);
+        mensajes.add(m);
+        mensajes.add(m2);
+        mensajes.add(m);
+        mensajes.add(m2);
+        mensajes.add(m);
+        mensajes.add(m2);
+        mensajes.add(m);
+        mensajes.add(m2);
+        mensajes.add(m);
+        mensajes.add(m2);
+
+
         return mensajes;
     }
 
@@ -70,6 +93,7 @@ public class ChatIndividualGUI extends AppCompatActivity {
     public void enviarMensaje(View view) {
         btnEnviar.setVisibility(View.GONE);
         btnAudio.setVisibility(View.VISIBLE);
+        txtMensaje.setText("");
 
         //Se envía el mensaje
     }

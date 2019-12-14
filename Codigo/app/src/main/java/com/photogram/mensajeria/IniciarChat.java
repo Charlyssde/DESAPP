@@ -91,6 +91,7 @@ public class IniciarChat extends AppCompatActivity {
                             Intent intent =  new Intent(IniciarChat.this, ChatIndividualGUI.class);
                             intent.putExtra("username", usuario.getUsername());
                             startActivity(intent);
+                            finish();
                         }
                     });
                     rv.setAdapter(adapter);
@@ -124,6 +125,7 @@ public class IniciarChat extends AppCompatActivity {
                                 Intent intent =  new Intent(IniciarChat.this, ChatIndividualGUI.class);
                                 intent.putExtra("username", usuario.getUsername());
                                 startActivity(intent);
+                                finish();
                             }
                         });
                             rv.setAdapter(adapter);
