@@ -1,3 +1,2 @@
-include ':app', ':grpc'
+include ':app', ':api'
 rootProject.name='Photogram'
-include ':app', ':grpc'
