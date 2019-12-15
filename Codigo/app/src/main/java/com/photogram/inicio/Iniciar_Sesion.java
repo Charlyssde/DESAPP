@@ -62,7 +62,8 @@ public class Iniciar_Sesion extends AppCompatActivity {
         });
 
         SharedPreferences myPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
-        String token = myPreferences.getString("TOKEN", "unknown");
+        //TODO cambiar aquí
+        String token = myPreferences.getString("USERNAMED", "unknown");
 
         if(!Objects.equals(token, "unknown")){
             Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);

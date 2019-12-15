@@ -41,8 +41,8 @@ public class ChatsListAdapter extends RecyclerView.Adapter<ChatsListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ChatsListAdapter.ViewHolder holder, int position) {
-        holder.txtUsername.setText(mDataSet.get(position).getDestinatario().getUsername());
-        holder.txtMensaje.setText(mDataSet.get(position).getLastMensaje());
+        holder.txtUsername.setText(mDataSet.get(position).getLastMensaje().getSender());
+        holder.txtMensaje.setText(mDataSet.get(position).getLastMensaje().getContent());
     }
 
     @Override

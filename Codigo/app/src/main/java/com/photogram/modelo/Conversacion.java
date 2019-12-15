@@ -1,32 +1,51 @@
 package com.photogram.modelo;
 
+import android.content.SharedPreferences;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Conversacion implements Serializable {
-    private String lastMensaje;
-    private Usuario remitente;
-    private Usuario destinatario;
+    private Mensaje lastMensaje;
+    private String me;
+    private String destinatario;
     private List<Mensaje> mensajes;
 
-    public Conversacion(Usuario destinatario) {
+    public Conversacion(String destinatario, String me){
         this.destinatario = destinatario;
+        this.me = me;
     }
 
-    public String getLastMensaje() {
+    public Mensaje getLastMensaje() {
         return lastMensaje;
     }
 
-    public void setLastMensaje(String lastMensaje) {
+    public void setLastMensaje(Mensaje lastMensaje) {
         this.lastMensaje = lastMensaje;
     }
 
-    public Usuario getDestinatario() {
+    public String getDestinatario() {
         return destinatario;
     }
 
-    public void setDestinatario(Usuario destinatario) {
+    public void setDestinatario(String destinatario) {
         this.destinatario = destinatario;
+    }
+
+    public String getMe() {
+        return me;
+    }
+
+    public void setMe(String me) {
+        this.me = me;
+    }
+
+    public List<Mensaje> getMensajes() {
+        return mensajes;
+    }
+
+    public void setMensajes(List<Mensaje> mensajes) {
+        this.mensajes = mensajes;
     }
 }

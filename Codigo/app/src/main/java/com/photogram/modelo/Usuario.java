@@ -5,7 +5,8 @@ import java.util.Random;
 public class Usuario {
     private String username;
 
-    public Usuario() {
+    public Usuario(String username) {
+        this.username = username;
     }
 
     public String getUsername() {
@@ -16,8 +17,4 @@ public class Usuario {
         this.username = username;
     }
 
-    private int generateRndm(){
-        Random rd = new Random();
-        return rd.nextInt();
-    }
 }

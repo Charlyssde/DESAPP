@@ -26,6 +26,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.photogram.adapters.FotoFeedAdapter;
+import com.photogram.grpc.grpc.ThreadMessages;
 import com.photogram.mensajeria.ChatsGUI;
 import com.photogram.modelo.Foto;
 import com.photogram.perfil.VerPerfil;
@@ -72,6 +73,10 @@ public class Feed extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), llm.getOrientation());
         rv.addItemDecoration(dividerItemDecoration);
 
+        SharedPreferences myPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+        String username = myPreferences.getString("USERNAME", "unknown");
+
+        (new ThreadMessages(username)).run();
     }
 
     private void setFotos() {

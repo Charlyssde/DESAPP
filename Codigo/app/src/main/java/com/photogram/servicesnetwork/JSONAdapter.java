@@ -97,7 +97,7 @@ public class JSONAdapter {
         List<Usuario> usuarios =  new ArrayList<>();
 
         for( int i = 0; i < response.length(); i++){
-            final Usuario usuario = new Usuario();
+            final Usuario usuario = new Usuario(null);
             JSONObject jsonObject = response.getJSONObject(i);
             usuario.setUsername(jsonObject.getString("username"));
             usuarios.add(usuario);
@@ -107,7 +107,7 @@ public class JSONAdapter {
 
     public static List<Usuario> oneUserAdapter(JSONObject jsonObject){
         List<Usuario> usuarios = new ArrayList<>();
-        Usuario usuario = new Usuario();
+        Usuario usuario = new Usuario(null);
         try{
             usuario.setUsername(jsonObject.getString("username"));
             usuarios.add(usuario);

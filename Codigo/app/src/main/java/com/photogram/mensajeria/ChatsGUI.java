@@ -59,14 +59,6 @@ public class ChatsGUI extends AppCompatActivity {
 
     private List<Conversacion> getChats(){
         List<Conversacion> lista = new ArrayList<>();
-
-        Usuario u = new Usuario();
-        Conversacion c = new Conversacion(u);
-        lista.add(c);
-        lista.add(c);
-        lista.add(c);
-        lista.add(c);
-
         return lista;
     }
 

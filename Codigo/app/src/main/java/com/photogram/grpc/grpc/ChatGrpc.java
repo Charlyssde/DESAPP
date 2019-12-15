@@ -1,6 +1,4 @@
-package com.photogram;
-
-import com.photogram.grpc.grpc.ChatOuterClass;
+package com.photogram.grpc.grpc;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
@@ -116,14 +114,14 @@ public final class ChatGrpc {
      * </pre>
      */
     public void recibirMensajes(ChatOuterClass.Usuario request,
-                                io.grpc.stub.StreamObserver<ChatOuterClass.Mensaje> responseObserver) {
+        io.grpc.stub.StreamObserver<ChatOuterClass.Mensaje> responseObserver) {
       asyncUnimplementedUnaryCall(getRecibirMensajesMethod(), responseObserver);
     }
 
     /**
      */
     public void enviarMensaje(ChatOuterClass.Mensaje request,
-                              io.grpc.stub.StreamObserver<ChatOuterClass.Empty> responseObserver) {
+        io.grpc.stub.StreamObserver<ChatOuterClass.Empty> responseObserver) {
       asyncUnimplementedUnaryCall(getEnviarMensajeMethod(), responseObserver);
     }
 
@@ -171,7 +169,7 @@ public final class ChatGrpc {
      * </pre>
      */
     public void recibirMensajes(ChatOuterClass.Usuario request,
-                                io.grpc.stub.StreamObserver<ChatOuterClass.Mensaje> responseObserver) {
+        io.grpc.stub.StreamObserver<ChatOuterClass.Mensaje> responseObserver) {
       asyncServerStreamingCall(
           getChannel().newCall(getRecibirMensajesMethod(), getCallOptions()), request, responseObserver);
     }
@@ -179,7 +177,7 @@ public final class ChatGrpc {
     /**
      */
     public void enviarMensaje(ChatOuterClass.Mensaje request,
-                              io.grpc.stub.StreamObserver<ChatOuterClass.Empty> responseObserver) {
+        io.grpc.stub.StreamObserver<ChatOuterClass.Empty> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getEnviarMensajeMethod(), getCallOptions()), request, responseObserver);
     }

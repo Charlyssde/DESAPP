@@ -2,9 +2,9 @@ syntax = "proto2";
 
 message Mensaje {
 	optional string id = 1;
-	required Usuario sender =2;
+	required string sender =2;
 	required string content = 3;
-	required Usuario receiver = 4;
+	required string receiver = 4;
 	extensions 77 to 78;
 }
 
