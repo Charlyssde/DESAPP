@@ -42,6 +42,8 @@ public class Iniciar_Sesion extends AppCompatActivity {
     private VolleyS volley;
     protected RequestQueue fRequestQueue;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 loginRequest();
                 btnIngresar.setEnabled(false);
             }
@@ -89,50 +92,113 @@ public class Iniciar_Sesion extends AppCompatActivity {
         });
     }
 
-    private void loginRequest (){
+    private void loginRequest () {
+
         btnIngresar.setEnabled(false);
         Map<String, String> param = new HashMap<>();
-        param.put ("username", txtUsername.getText().toString());
-        param.put ("password", txtPassword.getText().toString());
+        param.put("username", txtUsername.getText().toString());
+        param.put("password", txtPassword.getText().toString());
 
         JSONObject jsonObject = new JSONObject(param);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApiEndPoint.login, jsonObject,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        LoginPOJO result = JSONAdapter.loginAdapter(response);
+        boolean resultado = Alive();
+        if (resultado == true) {
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApiEndPoint.login, jsonObject,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            LoginPOJO result = JSONAdapter.loginAdapter(response);
 
 
-                        //SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
-                        SharedPreferences mPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
-                        SharedPreferences.Editor spEditor = mPreferences.edit();
-                        spEditor.putString("USERNAME", result.getUsername());
-                        spEditor.apply();
-                        //SharedPreferences.Editor myEditor = myPreferences.edit();
-                        //myEditor.putString("TOKEN", "" + result.getToken());
-                        //myEditor.putString("USERNAME", result.getUsername());
-                        //myEditor.commit();
+                            //SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
+                            SharedPreferences mPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+                            SharedPreferences.Editor spEditor = mPreferences.edit();
+                            spEditor.putString("USERNAME", result.getUsername());
+                            spEditor.apply();
+                            //SharedPreferences.Editor myEditor = myPreferences.edit();
+                            //myEditor.putString("TOKEN", "" + result.getToken());
+                            //myEditor.putString("USERNAME", result.getUsername());
+                            //myEditor.commit();
 
-                        Toast.makeText(Iniciar_Sesion.this, "Iniciando " , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Iniciar_Sesion.this, "Iniciando ", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Iniciar_Sesion.this, "Error al ingresar", Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "" + error.getMessage());
-                btnIngresar.setEnabled(true);
-            }
-        });
-        volley.addToQueue(jsonObjectRequest);
+                            Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(Iniciar_Sesion.this, "Error al ingresar", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "" + error.getMessage());
+                    btnIngresar.setEnabled(true);
+                }
+            });
+            volley.addToQueue(jsonObjectRequest);
 
+
+        } else {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApiEndPoint.login2, jsonObject,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            LoginPOJO result = JSONAdapter.loginAdapter(response);
+
+
+                            //SharedPreferences myPreferences = getPreferences(Context.MODE_PRIVATE);
+                            SharedPreferences mPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
+                            SharedPreferences.Editor spEditor = mPreferences.edit();
+                            spEditor.putString("USERNAME", result.getUsername());
+                            spEditor.apply();
+                            //SharedPreferences.Editor myEditor = myPreferences.edit();
+                            //myEditor.putString("TOKEN", "" + result.getToken());
+                            //myEditor.putString("USERNAME", result.getUsername());
+                            //myEditor.commit();
+
+                            Toast.makeText(Iniciar_Sesion.this, "Iniciando ", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(Iniciar_Sesion.this, "Error al ingresar", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "" + error.getMessage());
+                    btnIngresar.setEnabled(true);
+                }
+            });
+            volley.addToQueue(jsonObjectRequest);
+        }
 
     }
+    public  boolean Alive () {
+
+        boolean res = true;
 
 
+    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, ApiEndPoint.alive, null,
+            new Response.Listener<JSONObject>() {
+
+                public void onResponse() {
+                    Toast.makeText(Iniciar_Sesion.this, "Entro ingresar", Toast.LENGTH_SHORT).show();
+
+
+                }
+            }, new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Toast.makeText(Iniciar_Sesion.this, "Error ", Toast.LENGTH_SHORT).show();
+
+
+        }
+    });
+        volley.addToQueue(jsonObjectRequest);
+        return res;
+
+
+}
 
 }
 
