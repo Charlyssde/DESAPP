@@ -25,6 +25,7 @@ public class ApiEndPoint {
     public static String host = "35.238.91.65:7777";
     public static String host1 = "35.231.27.235:7777";
 
+    public static String hostDownloads = "http://10.0.2.2:7777/static/";
 
     public static String baseURL = "http://" + host + "/api";
     public static String baseURL2 = "http://" + host1 + "/api";

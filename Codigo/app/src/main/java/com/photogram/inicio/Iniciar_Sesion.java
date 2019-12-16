@@ -48,7 +48,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ApiEndPoint.Alive();
         txtUsername = findViewById(R.id.editText2Usuario);
         txtPassword = findViewById(R.id.editTextContraseña);
         btnIngresar = findViewById(R.id.button);
