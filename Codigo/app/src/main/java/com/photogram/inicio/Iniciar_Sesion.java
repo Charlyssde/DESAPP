@@ -46,7 +46,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ApiEndPoint.Alive();
         txtUsername = findViewById(R.id.editText2Usuario);
         txtPassword = findViewById(R.id.editTextContraseña);
         btnIngresar = findViewById(R.id.button);
@@ -56,6 +56,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 loginRequest();
                 btnIngresar.setEnabled(false);
             }
@@ -90,6 +91,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
     }
 
     private void loginRequest (){
+
         btnIngresar.setEnabled(false);
         Map<String, String> param = new HashMap<>();
         param.put ("username", txtUsername.getText().toString());

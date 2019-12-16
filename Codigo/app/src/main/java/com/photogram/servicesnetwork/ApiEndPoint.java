@@ -1,4 +1,13 @@
 package com.photogram.servicesnetwork;
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.Response;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import org.json.JSONObject;
 
 public class ApiEndPoint {
 
@@ -6,23 +15,33 @@ public class ApiEndPoint {
     public static String hostGrpc ="10.0.2.2" ;
     private static String[] ips = {"35.238.91.65:7777","35.231.27.235:7777"};
 
-    private static String host = "35.238.91.65:7777";
-    public static String alive = baseURL + "/alive";
-    private static String baseURL = "http://" + host + "/api";
-    JSONObject jsonObject = new JSONObject();
-    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, ApiEndPoint.alive,
+    private static String  host2 = "localhost:7777";
+    private static String baseURL2 = "http://" + host2 + "/api";
+    private String alive = baseURL2 + "/alive";
+
+    public void Alive () {
+            volley = VolleyS.getInstance(ApiEndPoint.this);
+        fRequestQueue = volley.getRequestQueue();
+
+    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, ApiEndPoint.alive, null,
             new Response.Listener<JSONObject>() {
-                public void onResponse(JSONObject response) {
-
-                } new Response.ErrorListener() {
+                @Override
+                public void onResponse() {
+                   public static host = "35.238.91.65:7777";
+                    public static baseURL = "http://" + host + "/api";
+                }
+            }, new Response.ErrorListener() {
                     @Override
-                    public void onErrorResponse(VolleyError error) {
-                        host = "35.231.27.235:7777";
-                        baseURL = "http://" + host + "/api";
-                    }
 
-            }
+
+                        public void onErrorResponse(VolleyError error) {
+                        public static  host = "35.231.27.235:7777";
+                        public static  baseURL = "http://" + host + "/api";
+                        }
+                    });
+                    volley.addToQueue(jsonObjectRequest);
     }
+
 
     public static String hostDownloads = "http://10.0.2.2:7777/static/";
 
