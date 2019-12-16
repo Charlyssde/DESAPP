@@ -10,11 +10,22 @@ public class Conversacion implements Serializable {
     private Mensaje lastMensaje;
     private String me;
     private String destinatario;
-    private List<Mensaje> mensajes;
+    private ArrayList<Mensaje> mensajes;
+    private String key;
 
     public Conversacion(String destinatario, String me){
         this.destinatario = destinatario;
         this.me = me;
+        this.key = this.destinatario + this.me;
+        mensajes = new ArrayList<>();
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public Mensaje getLastMensaje() {
@@ -41,11 +52,11 @@ public class Conversacion implements Serializable {
         this.me = me;
     }
 
-    public List<Mensaje> getMensajes() {
+    public ArrayList<Mensaje> getMensajes() {
         return mensajes;
     }
 
-    public void setMensajes(List<Mensaje> mensajes) {
+    public void setMensajes(ArrayList<Mensaje> mensajes) {
         this.mensajes = mensajes;
     }
 }

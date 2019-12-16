@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.photogram.adapters.MensajesAdapter;
 import com.photogram.grpc.grpc.ChatGrpc;
 import com.photogram.grpc.grpc.ChatOuterClass;
@@ -34,7 +35,7 @@ public class ChatIndividualGUI extends AppCompatActivity {
 
     private ListView view;
     private MensajesAdapter adapter;
-    private List<Mensaje> mensajes;
+    private ArrayList<Mensaje> mensajes;
 
     private ManagedChannel mChannel;
     private ChatGrpc.ChatStub stub;
@@ -44,8 +45,12 @@ public class ChatIndividualGUI extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_individual_gui);
+        mensajes = new ArrayList<>();
+        //ArrayList<String> myList = (ArrayList<String>) getIntent().getSerializableExtra("mylist");
+        mensajes = (ArrayList<Mensaje>) getIntent().getSerializableExtra("mensajes");
+        Log.e("----------0", mensajes.toString());
 
-        this.contact = getIntent().getStringExtra("username");
+        this.contact = getIntent().getStringExtra("desti");
         this.setTitle(this.contact);
 
         SharedPreferences myPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
@@ -53,7 +58,6 @@ public class ChatIndividualGUI extends AppCompatActivity {
 
         view = findViewById(R.id.lista_mensajes);
 
-        mensajes = new ArrayList<>();
         setMensajes();
 
         btnEnviar = findViewById(R.id.btn_enviar_mensaje);
@@ -62,7 +66,6 @@ public class ChatIndividualGUI extends AppCompatActivity {
     }
 
     private void setMensajes() {
-        mensajes = getMensajes();
         adapter = new MensajesAdapter(this.me,mensajes, new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -73,29 +76,6 @@ public class ChatIndividualGUI extends AppCompatActivity {
         view.setAdapter(adapter);
     }
 
-    private List<Mensaje> getMensajes() {
-        Mensaje m = new Mensaje();
-        m.setSender(me);
-        m.setContent("Message test");
-        Mensaje m2 = new Mensaje();
-        m2.setSender("Other");
-        m2.setContent("Message test response");
-        mensajes.add(m);
-        mensajes.add(m2);
-        mensajes.add(m);
-        mensajes.add(m2);
-        mensajes.add(m);
-        mensajes.add(m2);
-        mensajes.add(m);
-        mensajes.add(m2);
-        mensajes.add(m);
-        mensajes.add(m2);
-        mensajes.add(m);
-        mensajes.add(m2);
-
-
-        return mensajes;
-    }
 
     public void insertText(View view) {
         btnEnviar.setVisibility(View.VISIBLE);

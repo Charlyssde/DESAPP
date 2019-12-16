@@ -2,6 +2,7 @@ package com.photogram.feed;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -26,9 +27,13 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.photogram.adapters.FotoFeedAdapter;
+import com.photogram.grpc.grpc.ChatGrpc;
+import com.photogram.grpc.grpc.ChatOuterClass;
 import com.photogram.grpc.grpc.ThreadMessages;
 import com.photogram.mensajeria.ChatsGUI;
+import com.photogram.modelo.Conversacion;
 import com.photogram.modelo.Foto;
+import com.photogram.modelo.Mensaje;
 import com.photogram.perfil.VerPerfil;
 import com.photogram.R;
 import com.photogram.servicesnetwork.ApiEndPoint;
@@ -38,9 +43,14 @@ import com.photogram.servicesnetwork.VolleyS;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 
 public class Feed extends AppCompatActivity {
 
@@ -52,6 +62,9 @@ public class Feed extends AppCompatActivity {
 
     private VolleyS volley;
     private RequestQueue fRequestQueue;
+    private String me_user;
+
+    public List<Conversacion> conversaciones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +74,8 @@ public class Feed extends AppCompatActivity {
 
         volley = VolleyS.getInstance(Feed.this);
         fRequestQueue = volley.getRequestQueue();
+
+        conversaciones = new ArrayList<>();
 
         rv = findViewById(R.id.rvFotodFeed);
 
@@ -72,11 +87,7 @@ public class Feed extends AppCompatActivity {
         rv.setLayoutManager(llm);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), llm.getOrientation());
         rv.addItemDecoration(dividerItemDecoration);
-
-        SharedPreferences myPreferences = getSharedPreferences("SharedPreferences", MODE_PRIVATE);
-        String username = myPreferences.getString("USERNAME", "unknown");
-
-        (new ThreadMessages(username)).run();
+        //(new ThreadMessages(username)).run();
     }
 
     private void setFotos() {
@@ -177,6 +188,7 @@ public class Feed extends AppCompatActivity {
         }
         return true;
     }
+
 }
 
 

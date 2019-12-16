@@ -51,6 +51,7 @@ public class MensajesAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         MensajeViewHolder holder = new MensajeViewHolder();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+
         Mensaje m = mensajes.get(i);
 
         if (m.getSender().equals(this.me)) { // this message was sent by us so let's create a basic chat bubble on the right

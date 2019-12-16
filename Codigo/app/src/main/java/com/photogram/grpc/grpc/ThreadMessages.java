@@ -20,7 +20,7 @@ import io.grpc.stub.StreamObserver;
 public class ThreadMessages implements Runnable {
 
     private ManagedChannel mChannel;
-    private ChatGrpc.ChatStub stub;
+    private ChatGrpc.ChatBlockingStub stub;
 
     private ChatOuterClass.Usuario me;
 
@@ -28,7 +28,7 @@ public class ThreadMessages implements Runnable {
 
     public ThreadMessages(String me) {
         mChannel = ManagedChannelBuilder.forAddress(ApiEndPoint.hostGrpc, ApiEndPoint.portGrpc).usePlaintext(true).build();
-        stub = ChatGrpc.newStub(mChannel);
+        stub = ChatGrpc.newBlockingStub(mChannel);
         this.me = ChatOuterClass.Usuario.newBuilder().setUsername(me).build();
     }
 
@@ -37,26 +37,12 @@ public class ThreadMessages implements Runnable {
 
         mensajes = new ArrayList<>();
         Log.e("GETS", "IN HERE");
-            stub.recibirMensajes(this.me, new StreamObserver<ChatOuterClass.Mensaje>() {
-                @Override
-                public void onNext(ChatOuterClass.Mensaje value) {
-                    Mensaje msj = new Mensaje();
-                    msj.setSender(value.getSender());
-                    msj.setContent(value.getContent());
-                    msj.setReceiver(value.getReceiver());
-                    //msj.setId(value.getId());
-                    mensajes.add(msj);
-                }
+        Iterator<ChatOuterClass.Mensaje> mensajes;
+        mensajes = stub.recibirMensajes(this.me);
 
-                @Override
-                public void onError(Throwable t) {
-                    Log.e("THREAD",t.getMessage());
-                }
-
-                @Override
-                public void onCompleted() {
-                    Log.e("THREAD", "COMPLETED");
-                }
-            });
+        while(mensajes.hasNext()){
+            ChatOuterClass.Mensaje msj = mensajes.next();
+            Log.e("MENSAJEEE", msj.getContent());
+        }
     }
 }

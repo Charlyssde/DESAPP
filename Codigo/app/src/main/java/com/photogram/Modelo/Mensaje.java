@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Mensaje implements Serializable {
-    private String content = "cont";
+    private String content;
     private Date date;
     private String sender;
     private String receiver;
