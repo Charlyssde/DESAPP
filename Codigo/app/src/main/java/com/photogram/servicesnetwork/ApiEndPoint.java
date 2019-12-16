@@ -6,8 +6,23 @@ public class ApiEndPoint {
     public static String hostGrpc ="10.0.2.2" ;
     private static String[] ips = {"35.238.91.65:7777","35.231.27.235:7777"};
 
-    private static String host = "10.0.2.2:7777";
+    private static String host = "35.238.91.65:7777";
+    public static String alive = baseURL + "/alive";
     private static String baseURL = "http://" + host + "/api";
+    JSONObject jsonObject = new JSONObject();
+    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, ApiEndPoint.alive,
+            new Response.Listener<JSONObject>() {
+                public void onResponse(JSONObject response) {
+
+                } new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        host = "35.231.27.235:7777";
+                        baseURL = "http://" + host + "/api";
+                    }
+
+            }
+    }
 
     public static String hostDownloads = "http://10.0.2.2:7777/static/";
 
