@@ -159,8 +159,9 @@ public class Feed extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.menu_perfil:
-                        Intent intent2 = new Intent(getApplicationContext(), VerPerfil.class);
-                        startActivity(intent2);
+                        //Intent intent2 = new Intent(getApplicationContext(), VerPerfil.class);
+                        //startActivity(intent2);
+                        Toast.makeText(Feed.this, "No está implementado, perdón :(", Toast.LENGTH_LONG).show();
                 }
                 return true;
             }

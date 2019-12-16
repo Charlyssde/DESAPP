@@ -24,6 +24,7 @@ import com.photogram.R;
 import com.photogram.adapters.UsuariosListAdapter;
 import com.photogram.feed.Feed;
 import com.photogram.inicio.Iniciar_Sesion;
+import com.photogram.modelo.Mensaje;
 import com.photogram.modelo.Usuario;
 import com.photogram.pojo.LoginPOJO;
 import com.photogram.servicesnetwork.ApiEndPoint;
@@ -33,6 +34,7 @@ import com.photogram.servicesnetwork.VolleyS;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IniciarChat extends AppCompatActivity {
@@ -89,7 +91,8 @@ public class IniciarChat extends AppCompatActivity {
                         public void onClick(View view) {
                             Usuario usuario = users.get(rv.getChildAdapterPosition(view));
                             Intent intent =  new Intent(IniciarChat.this, ChatIndividualGUI.class);
-                            intent.putExtra("username", usuario.getUsername());
+                            intent.putExtra("desti", usuario.getUsername());
+                            intent.putExtra("mensajes", new ArrayList<Mensaje>());
                             startActivity(intent);
                             finish();
                         }

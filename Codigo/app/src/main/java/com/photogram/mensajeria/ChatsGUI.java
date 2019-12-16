@@ -118,7 +118,7 @@ public class ChatsGUI extends AppCompatActivity {
             Iterator<ChatOuterClass.Mensaje> mensajes;
             mensajes = stub.recibirMensajes(this.me);
             int cont = 0;
-            while(mensajes.hasNext() && cont <7){
+            while(mensajes.hasNext()){
                 ChatOuterClass.Mensaje msj = mensajes.next();
                 Mensaje mensaje =  new Mensaje();
                 mensaje.setReceiver(msj.getReceiver());

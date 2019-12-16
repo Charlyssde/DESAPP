@@ -16,7 +16,7 @@ public class ApiEndPoint {
     public static String registrarModerador = baseURL + "/Moderador/";
     public static String registrarUsuario = baseURL + "/user";
     public static String getAllPhotos = baseURL + "/img/all";
-    public static String getPhoto = baseURL + "/img/";
+    public static String getPhotoByUser = baseURL + "/img/";
     public static String eliminarFoto = baseURL + "/img/";
     public static String reportarCuenta = baseURL + "/mod/";
     public static String subirFoto = baseURL + "/img/prueba";

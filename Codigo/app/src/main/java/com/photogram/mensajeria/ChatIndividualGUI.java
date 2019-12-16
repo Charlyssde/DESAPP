@@ -48,7 +48,7 @@ public class ChatIndividualGUI extends AppCompatActivity {
         mensajes = new ArrayList<>();
         //ArrayList<String> myList = (ArrayList<String>) getIntent().getSerializableExtra("mylist");
         mensajes = (ArrayList<Mensaje>) getIntent().getSerializableExtra("mensajes");
-        Log.e("----------0", mensajes.toString());
+        //Log.e("----------0", mensajes.toString());
 
         this.contact = getIntent().getStringExtra("desti");
         this.setTitle(this.contact);
