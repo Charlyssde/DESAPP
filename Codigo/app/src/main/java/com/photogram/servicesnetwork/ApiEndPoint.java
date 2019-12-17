@@ -16,21 +16,25 @@ public class ApiEndPoint {
     public static String hostGrpc ="10.0.2.2" ;
     public static String[] ips = {"35.238.91.65:7777","35.231.27.235:7777"};
 
-    public static String  host2 = "localhost:7777";
+    public static String  host2 = "35.238.91.65:7777"; //JENKINS
     public  static String baseURL3 = "http://" + host2 + "/api";
     public static String alive = baseURL3 + "/alive";
     public static String hostDownloads = "http://10.0.2.2:7777/static/";
 
 
     public static String host = "35.238.91.65:7777";
-    public static String host1 = "35.231.27.235:7777";
+    public static String host1 = "35.231.27.235:7777";//segunda ip
 
-    public static String hostDownloads = "http://10.0.2.2:7777/static/";
+    //public static String hostDownloads = "http://10.0.2.2:7777/static/";
 
     public static String baseURL = "http://" + host + "/api";
     public static String baseURL2 = "http://" + host1 + "/api";
 
+
     public static String login = baseURL + "/login";
+    public static String login2 = baseURL2 + "/login";
+
+
     public static String loginModerador = baseURL + "/loginModerador/";
     public static String registrarModerador = baseURL + "/Moderador/";
     public static String registrarUsuario = baseURL + "/user";
@@ -46,7 +50,7 @@ public class ApiEndPoint {
 
 
 
-    public static String login2 = baseURL2 + "/login";
+
     public static String loginModerador2 = baseURL2 + "/loginModerador/";
     public static String registrarModerador2 = baseURL2 + "/Moderador/";
     public static String registrarUsuario2 = baseURL2 + "/user";

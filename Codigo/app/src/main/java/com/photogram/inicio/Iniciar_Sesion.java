@@ -42,13 +42,14 @@ public class Iniciar_Sesion extends AppCompatActivity {
     private VolleyS volley;
     protected RequestQueue fRequestQueue;
 
+    private boolean res;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ApiEndPoint.Alive();
         txtUsername = findViewById(R.id.editText2Usuario);
         txtPassword = findViewById(R.id.editTextContraseña);
         btnIngresar = findViewById(R.id.button);
@@ -120,7 +121,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
                             //myEditor.putString("USERNAME", result.getUsername());
                             //myEditor.commit();
 
-                            Toast.makeText(Iniciar_Sesion.this, "Iniciando ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Iniciar_Sesion.this, "Iniciando en la ip  " + ApiEndPoint.login, Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
                             startActivity(intent);
@@ -155,7 +156,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
                             //myEditor.putString("USERNAME", result.getUsername());
                             //myEditor.commit();
 
-                            Toast.makeText(Iniciar_Sesion.this, "Iniciando ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Iniciar_Sesion.this, "Conexion la IP " +  ApiEndPoint.login2, Toast.LENGTH_LONG).show();
 
                             Intent intent = new Intent(Iniciar_Sesion.this, Feed.class);
                             startActivity(intent);
@@ -164,7 +165,7 @@ public class Iniciar_Sesion extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(Iniciar_Sesion.this, "Error al ingresar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Iniciar_Sesion.this, "Error al ingresar", Toast.LENGTH_LONG).show();
                     Log.e(TAG, "" + error.getMessage());
                     btnIngresar.setEnabled(true);
                 }
@@ -175,22 +176,21 @@ public class Iniciar_Sesion extends AppCompatActivity {
     }
     public  boolean Alive () {
 
-        boolean res = true;
 
 
     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, ApiEndPoint.alive, null,
             new Response.Listener<JSONObject>() {
 
-                public void onResponse() {
-                    Toast.makeText(Iniciar_Sesion.this, "Entro ingresar", Toast.LENGTH_SHORT).show();
-
-
+                @Override
+                public void onResponse(JSONObject response) {
+                    Toast.makeText(Iniciar_Sesion.this, "Entro" + ApiEndPoint.alive, Toast.LENGTH_LONG).show();
+                    res = true;
                 }
             }, new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
-            Toast.makeText(Iniciar_Sesion.this, "Error ", Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(Iniciar_Sesion.this, "Error ip" + ApiEndPoint.alive, Toast.LENGTH_LONG).show();
+            res = false;
 
         }
     });
